@@ -1,0 +1,273 @@
+body {
+    margin: 25px;
+    padding: 0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: aliceblue;
+}
+
+#nav-i {
+    display: flex;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+.nav1 a {
+    font-size: 15px;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 10px;
+    color: black;
+}
+
+li a:hover {
+    background-color: white;
+}
+
+.getid a {
+    text-align: center;
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 9px;
+    text-decoration: none;
+    width: 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+
+}
+.container2 {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+    flex-direction: column;
+}
+.btn {
+    text-align: center;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 110px;
+    background-color: #F2A33A;
+    height: 43px;
+    font-size: 15px;
+    width: 158px;
+}
+
+.btn1 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 2px solid black;
+    height: 43px;
+    width: 158px;
+}
+
+#t1 {
+    display: flex;
+}
+
+.p1 {
+    font-size: 58px;
+}
+
+.s1 {
+    background-color: aliceblue;
+}
+
+.s2 {
+    padding-top: 75px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row3{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+
+}
+.col {
+    width: 15%;
+    padding: 17px;
+}
+
+.col2 {
+    width: 21.5%;
+    padding: 17px;
+}
+
+.r1 {
+    width: 162px;
+    margin-top: -27px;
+}
+.t3{
+    width: 170px;
+}
+.card2{
+    margin-left: 80px;
+    padding-bottom: 34px;
+    background-color: aliceblue;
+    min-width: 300px;
+    width: 40px;
+}
+.card3{
+    margin-left: 80px;
+    padding-bottom: 34px;
+}
+.card {
+    margin-left: 80px;
+    padding-bottom: 34px;
+    background-color: aliceblue;
+}
+.card:hover .outer {
+    background-color: #0A2259;
+    
+}
+.card:hover .inner {
+    background-color: #6A88B6;
+}
+.outer{
+    padding: 10px;
+}
+.h{
+    color: black;
+}
+.card:hover .h{
+    color: white;
+}
+.card:hover h4{
+  color: white;
+}
+.card:hover .p4{
+    color: white;
+}
+.card:hover .btn1{
+    background-color: #F2A33A;
+    border-color: #F2A33A;
+}
+.img2{
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+#i1 {
+    margin-top: -49px;
+}
+
+.col1 {
+    width: 42%;
+    padding: 17px;
+}
+.col3{
+    width: 42%;
+    padding: 17px;
+    margin-top: 70px;
+}
+.p3 {
+    font-size: 48px;
+    width: 539px;
+}
+
+.p4 {
+    color: #AAAAAA;
+    font-size: small;
+    width: 147px;
+    height: 100px;
+}
+.check{
+    background-color: #6A88B6;
+    color: #ffffff;
+    border-radius: 50%;
+    display: inline-grid;
+}
+h4 ,h3{
+    color: #6A88B6;
+}
+
+.p5 {
+    font-size: 49px;
+    text-align: center;
+    max-width: 1000px;
+    margin-left: 155px;
+}
+.inner{
+    color: #6A88B6;
+}
+.icon1{
+    display: flex;
+}
+.p6{
+    font-size: 30px;
+    max-width: 1000px;
+    margin-top: 0px;
+}
+.p7{
+    color: #AAAAAA;
+    font-size: medium;
+    width: 447px;
+}
+.col5{
+    padding: 32px;
+}
+footer {
+    background-color: #0A2259;
+    margin: 4px;
+    padding: 21px;
+}
+.f2 {
+    color: white;
+    font-size: 30px;
+    padding: 28px;
+    margin: 50px;
+}
+.f01 {
+    color: #929292;
+    padding-top: 32px;
+}
+
+.f0 {
+    padding: 68px;
+    max-width: 400px;
+    margin: 0px;
+}
+.f3{
+   margin-left: 76px;
+}
+.email{
+    width: 330px;
+    height:30px;
+    border-radius: 10px;
+    margin-right: -30px;
+}
+.you{
+    color: #ffffff;
+}
+#b1{
+    border: none;
+    background-color: aliceblue;
+}
+#b2,#b3{
+    border: none;
+    border-color: #ffffff;
+    background-color: #ffffff;
+}

@@ -4,7 +4,7 @@ var database = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'chirag13',
-  database : 'schema20_3'
+  database : 'all_task'
 });
 
 database.connect()

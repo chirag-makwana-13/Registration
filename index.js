@@ -29,6 +29,10 @@ app.use('/dynamictable',require('./routes/dynamictable/dynamictable'))
 app.use('/kukucube',require('./routes/kukucube/kukucube'))
 app.use('/tictactoe',require('./routes/tictactoe/tictactoe'))
 app.use('/jsevent',require('./routes/jsevent/jsevent'))
+app.use('/html1',require('./routes/html1/html1'))
+app.use('/html2',require('./routes/html2/html2'))
+app.use('/html3',require('./routes/html3/html3'))
+app.use('/student',require('./routes/studentscrudfile/studentfilecrud'))
 
 
 

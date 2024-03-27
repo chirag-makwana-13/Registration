@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deatils</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            background-color: rgb(215, 232, 250);
+            border-collapse: collapse;
+            text-align: center;
+        }
+        h1{
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>
+        Find student details
+    </h1>
+    <div>
+
+        <table>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Age</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Address</th>
+            </tr>
+    
+            <tr>
+                <td>
+                    <%=data.FirstName%>
+                </td>
+                <td>
+                    <%=data.LastName%>
+                </td>
+                <td>
+                    <%=data.Age%>
+                </td>
+                <td>
+                    <%=data.PhoneNumber%>
+                </td>
+                <td>
+                    <%=data.Email%>
+                </td>
+                <td>
+                    <%=data.Gender%>
+                </td>
+                <td>
+                    <%=data.Hobbies%>
+                </td>
+                <td>
+                    <%=data.Address%>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

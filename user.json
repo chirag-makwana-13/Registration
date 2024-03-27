@@ -1,0 +1,298 @@
+[
+    {
+        "FirstName": "ayush",
+        "LastName": "makwana",
+        "Age": "20",
+        "PhoneNumber": "09090909090",
+        "Email": "abc@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "jamnagar",
+        "id": 8702
+    },
+    {
+        "FirstName": "chirag",
+        "LastName": "makwana",
+        "Age": "20",
+        "PhoneNumber": "09090909090",
+        "Email": "abc@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "jamnagar",
+        "id": 2007
+    },
+    {
+        "FirstName": "ravi",
+        "LastName": "makwana",
+        "Age": "24",
+        "PhoneNumber": "0909090905435",
+        "Email": "afsdbc@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling",
+            "Playgame"
+        ],
+        "Address": "jamnagar",
+        "id": 6346
+    },
+    {
+        "FirstName": "komal",
+        "LastName": "vyas",
+        "Age": "22",
+        "PhoneNumber": "0909090905435",
+        "Email": "afsdbc@gmail.com",
+        "Gender": "Female",
+        "Hobbies": [
+            "Reading books",
+            "Travelling",
+            "Playgame"
+        ],
+        "Address": "surat",
+        "id": 7657
+    },
+    {
+        "FirstName": "siya",
+        "LastName": "oza",
+        "Age": "12",
+        "PhoneNumber": "109090905435",
+        "Email": "xvdbc@gmail.com",
+        "Gender": "Female",
+        "Hobbies": [
+            "Travelling",
+            "Playgame"
+        ],
+        "Address": "rajkot",
+        "id": 7360
+    },
+    {
+        "FirstName": "ronit",
+        "LastName": "oza",
+        "Age": "45",
+        "PhoneNumber": "090905435",
+        "Email": "xvdbc@gmail.com",
+        "Gender": "Female",
+        "Hobbies": [
+            "Travelling",
+            "Playgame"
+        ],
+        "Address": "rajkot",
+        "id": 4773
+    },
+    {
+        "FirstName": "dushyant",
+        "LastName": "gosai",
+        "Age": "26",
+        "PhoneNumber": "966555555",
+        "Email": "abc@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "gandhinagar",
+        "id": 4789
+    },
+    {
+        "FirstName": "deep",
+        "LastName": "patel",
+        "Age": "14",
+        "PhoneNumber": "0908866767",
+        "Email": "d@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "rajkot",
+        "id": 548
+    },
+    {
+        "FirstName": "tirth",
+        "LastName": "parmar",
+        "Age": "24",
+        "PhoneNumber": "6546546546",
+        "Email": "t123@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "anad",
+        "id": 9030
+    },
+    {
+        "FirstName": "darshit",
+        "LastName": "parmar",
+        "Age": "34",
+        "PhoneNumber": "15258454",
+        "Email": "darshitg@gamil.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Playgame"
+        ],
+        "Address": "mumbai\r\n",
+        "id": 3194
+    },
+    {
+        "FirstName": "dhyey",
+        "LastName": "patel",
+        "Age": "11",
+        "PhoneNumber": "99887445112",
+        "Email": "dhyey@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Playgame"
+        ],
+        "Address": "ahmedabad",
+        "id": 1380
+    },
+    {
+        "FirstName": "rushikesh",
+        "LastName": "falak",
+        "Age": "55",
+        "PhoneNumber": "588945745465",
+        "Email": "rushi@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling",
+            "Playgame"
+        ],
+        "Address": "godhara",
+        "id": 4275
+    },
+    {
+        "FirstName": "jyot",
+        "LastName": "damor",
+        "Age": "56",
+        "PhoneNumber": "98874524654",
+        "Email": "j@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "sanad",
+        "id": 7532
+    },
+    {
+        "FirstName": "chand",
+        "LastName": "antala",
+        "Age": "76",
+        "PhoneNumber": "878875455544",
+        "Email": "chand@gmail.com",
+        "Gender": "Female",
+        "Hobbies": "Reading books",
+        "Address": "jamnagar",
+        "id": 2419
+    },
+    {
+        "FirstName": "khushi",
+        "LastName": "ladani",
+        "Age": "23",
+        "PhoneNumber": "785454986544",
+        "Email": "khush@gmail.com",
+        "Gender": "Female",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "baroda",
+        "id": 5
+    },
+    {
+        "FirstName": "grishma",
+        "LastName": "solanki",
+        "Age": "21",
+        "PhoneNumber": "7524654212",
+        "Email": "gri@gmail.com",
+        "Gender": "Female",
+        "Hobbies": "Travelling",
+        "Address": "modasa",
+        "id": 1059
+    },
+    {
+        "FirstName": "dixit",
+        "LastName": "sojitra",
+        "Age": "54",
+        "PhoneNumber": "598742664",
+        "Email": "dixi@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Playgame"
+        ],
+        "Address": "rajkot",
+        "id": 5200
+    },
+    {
+        "FirstName": "reter",
+        "LastName": "ertert",
+        "Age": "12",
+        "PhoneNumber": "212212",
+        "Email": "er@gmail",
+        "Gender": "Male",
+        "Hobbies": "Reading books",
+        "Address": "tyrty",
+        "id": 7512
+    },
+    {
+        "FirstName": "jeel",
+        "LastName": "patel",
+        "Age": "15",
+        "PhoneNumber": "90765665665",
+        "Email": "jeel@gmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Travelling"
+        ],
+        "Address": "gandhinagar",
+        "id": 82
+    },
+    {
+        "FirstName": "rushi",
+        "LastName": "vasu",
+        "Age": "13",
+        "PhoneNumber": "7098778678",
+        "Email": "v@gmail.com",
+        "Gender": "Male",
+        "Hobbies": "Reading books",
+        "Address": "jammu",
+        "id": 81
+    },
+    {
+        "FirstName": "chirag",
+        "LastName": "pawar",
+        "Age": "45",
+        "PhoneNumber": "75567546546",
+        "Email": "c@mgmail.com",
+        "Gender": "Male",
+        "Hobbies": [
+            "Reading books",
+            "Playgame"
+        ],
+        "Address": "ahmedabad",
+        "id": 9627
+    },
+    {
+        "FirstName": "fg",
+        "LastName": "fdsf",
+        "Age": "12",
+        "PhoneNumber": "123654789",
+        "Email": "abc@gmail.com",
+        "Gender": "Male",
+        "Hobbies": "Reading books",
+        "Address": "dfsf",
+        "id": 6400
+    }
+]

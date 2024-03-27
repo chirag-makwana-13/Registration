@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>allstudent</title>
+    <style>
+        body{
+            background-color: rgb(185, 232, 250);
+        }
+        table{
+            margin: 0 auto;
+        }
+        button{
+            background-color: antiquewhite;  
+            border: none;
+          
+        }
+        table,th,td{
+            border: 1px solid black;
+            background-color: antiquewhite;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        h1{
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+        
+    }
+    </style>
+</head>
+<body>
+    <h1>All Students Data</h1>
+    <table>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <!-- <th>Age</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Address</th> -->
+                <th>Number</th>
+                <th>Email</th>
+            <th>Details</th>
+        </tr>
+        <% for(var i=0; i<data.length;i++){%>
+            <tr>
+                <td><%=data[i].FirstName%></td>
+                <td><%=data[i].LastName%></td>
+                <!-- <td><%=data[i].Age%></td>
+                    <td><%=data[i].Gender%></td>
+                    <td><%=data[i].Hobbies%></td>
+                    <td><%=data[i].Address%></td> -->
+                    <td><%=data[i].PhoneNumber%></td>
+                    <td><%=data[i].Email%></td>
+                <td><button><a href="/user/<%=data[i].id%>" >View Details</a></button></td>
+                
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>
