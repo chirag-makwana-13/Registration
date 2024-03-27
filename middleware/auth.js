@@ -4,7 +4,7 @@ const JWT_SECERET = "chiragmirazapur"
 
 const authMiddleware = async (req, res, next) => {
     const authHeader = localStorage.getItem("authToken")
-    console.log('auth', authHeader);
+    // console.log('auth', authHeader);
 
     if (authHeader) {
         jwt.verify(authHeader, JWT_SECERET, (err, payload) => {

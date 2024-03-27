@@ -19,12 +19,20 @@ const localStorage = require('localStorage');
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-//***************************  Login   ********************************
+app.use(express.static(path.join(__dirname, 'public')))
+//***************************  All router  ********************************
 app.use('/',require('./routes/register/register'))
 app.use('/login',require('./routes/login/login'))
 app.use('/forgotpassword',require('./routes/forgotpassword/forgotpassword'))
 app.use('/profile',require('./routes/profile/profile'))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use('/dynamictable',require('./routes/dynamictable/dynamictable'))
+app.use('/kukucube',require('./routes/kukucube/kukucube'))
+app.use('/tictactoe',require('./routes/tictactoe/tictactoe'))
+app.use('/jsevent',require('./routes/jsevent/jsevent'))
+
+
+
+
 
 // ---------------------profile-------------------------
 app.all('/newprofile', authMiddleware,async (req, res) => {
@@ -41,18 +49,6 @@ app.get('/logout',(req,res)=>{
   } catch (error) {
     return res,end('Try again')
   }
-})
-// ---------------------dynamictable-------------------------
-app.get('/dynamictable',(req, res) => {
-  res.render('dynamictable', { err: '' });
-})
-// ---------------------kukucude-------------------------
-app.get('/kukucube',(req, res) => {
-  res.render('kukucube', { err: '' });
-})
-// ---------------------tictactoe-------------------------
-app.get('/tictactoe',(req, res) => {
-  res.render('tictactoe', { err: '' });
 })
 
 

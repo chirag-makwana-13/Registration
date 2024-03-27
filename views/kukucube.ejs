@@ -45,6 +45,15 @@
         #count{
             float: left;
         }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: rgb(2, 0, 124);
+            margin-left: 1000px;
+        }
+        a:hover{
+            color: rgb(126, 0, 0);
+        }
     </style>
 </head>
 
@@ -68,9 +77,10 @@
                 <td id="a4" class="td"></td>
             </tr>
         </table>
+        <a href="/newprofile">Back --> </a>
     <script>
         var value = 0;
-        var timeleft =10;
+        var timeleft =5;
         var timer = setInterval(function(){
             if (timeleft <=0){
                 clearInterval(timer);

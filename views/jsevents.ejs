@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;                
+        }
+
+        tr {
+            height: 100px;
+            background-color: rgb(243, 223, 107);
+        }
+
+        table {
+            background-color: darkgrey;
+            table-layout: fixed;
+            width: 100%;
+            padding: 15px;
+
+        }
+
+        .ab {
+            background-color: skyblue;
+            color: rgb(0, 0, 114);
+        }
+
+        h1 {
+            text-align: center;
+            background-color: lightgray;
+        }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: rgb(2, 0, 124);
+        }
+        a:hover{
+            color: rgb(13, 114, 0);
+        }
+    </style>
+</head>
+
+
+<body onload="loadedFunction()" onresize="resizeFunction()">
+    <h1>Java Script Event</h1>
+    <hr>
+    <h2>Name: Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095</h2>
+    <table>
+        <tr>
+            <td class="ab"> <b>Change :</b>
+                <select onchange="changeFunction()" id="state">
+                    <option value="guj">Gujarat</option>
+                    <option value="up">UP</option>
+                    <option value="mp">MP</option>
+                    <option value="jk">Jammu kashmir</option>
+                </select>
+            </td>
+            <td><b>Click :</b><button onclick="clickFunction()"> Click me</button></td>
+            <td class="ab"><b>Mouse In :</b>
+                <p onmouseover="mouseoverevent()"> Hello eSparkbiz !</p>
+            </td>
+            <td><b>Mouse Out :</b>
+                <p onmouseout="mouseoutevent()"> Hlwwww eSparkbiz !</p>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Page Loaded :</b>
+                <p> Heyyyy eSparkbiz !</p>
+            </td>
+            <td class="ab"> <b>Blur :</b> <input type="text" id="city" name="city" onblur="blurFunction()"></td>
+            <td><b>Valid or not :</b><input type="text" oninvalid="validFunction()" required>
+                <input type="submit" value="Submit" oninvalid="validFunction()">
+            </td>
+            <td class="ab"><b>Input :</b><input type="text" id="myInput" oninput="inputFunction()"></td>
+        </tr>
+        <tr>
+            <td class="ab"><b>Select :</b> <input type="text" value="Select me!!" onselect="selectFunction()"></td>
+            <td><b>Focus :</b><input type="text" value="Focus" onfocus="focusFunction()"></td>
+            <td class="ab"><b>KeyDown :</b><input type="text" value="Keydown" onkeydown="keydownFunction()"></td>
+            <td><b>Double click :</b><button ondblclick="btnFunction()">Double-click me</button></td>
+        </tr>
+        <tr>
+            <td><b>Mouse Move :</b>
+                <p onmousemove="moveFunction()">&#128513; Touch Emoji</p>
+            </td>
+            <td class="ab"><b>Mouse Wheel :</b>
+                <p onwheel="wheelFunction()">Pdf Scrolling...</p>
+            </td>
+            <td i><b>Drag :</b>
+                <p ondrag="dragFunction()">Change my position</p>
+            </td>
+            <td class="ab"><b>Scroll :</b>
+                <p onscroll="scrollFunction()"
+                    style="border: 1px solid black;width: 200px;height: 100px;overflow:scroll">Memes Scrolling. Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Rem, quas laboriosam, odio assumenda ducimus ad
+                    quam debitis nobis ullam accusantium iure. Recusandae tempore voluptatum repellat eveniet iure alias
+                    nemo amet.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="ab"><b>Toggle :</b><br><br>
+                <details ontoggle="toggleFunction()">
+                    <summary>Toggle me...</summary>
+                    <p> Hello eSparkbiz team...</p>
+                </details>
+            </td>
+            <td><b>Copy : </b>
+                <p oncopy="copyFunction()">Try to copy this text</p>
+            </td>
+            <td class="ab"><b>Cut : </b>
+                <p oncut="cutFunction()">Try to cut this text</p>
+            </td>
+            <td><b>Paste : </b>
+                <p onpaste="pasteFunction()">Try to paste this text</p>
+            </td>
+
+        </tr>
+        <tr>
+            <td><b>On resize :</b>
+                <p>Resize browser window</p>
+            </td>
+            <td class="ab"><b>Image :</b><br><br><img src="chirag.gif" onerror="imgFunction()"> Image could not be
+                loaded.</td>
+            <td><b>Mouse Down :</b>
+                <p id="p1" onmousedown="mouseDown()">Hello eSparkbiz team, Good morning </p>
+            </td>
+            <td class="ab"><b>Mouse Up :</b>
+                <p id="p2" onmouseup="mouseUp()">Hello eSparkbiz team, Good morning </p>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Add event</b><button id="myBtn"onclick="myFunction()">Click me</button></td>
+            <td></td>
+            <td></td>
+            <td></td>   
+        </tr>
+    </table>
+    <a href="/newprofile">Back -></a>
+    <script>
+        changeFunction = () => {
+            alert('On Copy is triggered');
+        }
+        function clickFunction() {
+            alert("On click triggered");
+        }
+        function mouseoverevent() {
+            alert("Mouse in triggered");
+        }
+        function mouseoutevent() {
+            alert("Mouse out triggered");
+        }
+        function loadedFunction() {
+            alert("Page is loaded");
+        }
+        function blurFunction() {
+            alert("Blur is triggered");
+        }
+        function validFunction() {
+            alert("Valid triggered");
+        }
+        function inputFunction() {
+            alert("Input triggered")
+        }
+        function selectFunction() {
+            alert("You have selected some text!");
+        }
+        function focusFunction() {
+            alert("Focus triggered")
+        }
+        function keydownFunction() {
+            alert("Key down triggered");
+        }
+        function btnFunction() {
+            alert("Dobuble click triggered");
+        }
+        function moveFunction() {
+            alert("Move triggered")
+        }
+        function wheelFunction() {
+            alert("Wheel triggered")
+        }
+        function dragFunction() {
+            alert("Drag triggered")
+        }
+        function scrollFunction() {
+            alert("Scroll triggered")
+        }
+        function toggleFunction() {
+            alert("Toggle triggered");
+        }
+        function copyFunction() {
+            alert("Copy triggered")
+        }
+        function cutFunction() {
+            alert("Cut triggered")
+        }
+        function pasteFunction() {
+            alert("Paste triggered")
+        }
+        function resizeFunction() {
+            alert("You have changed the size of the browser window!");
+        }
+        function imgFunction() {
+            alert("The image could not be loaded.");
+        }
+        function mouseDown() {
+            document.getElementById("p1").style.color = "red";
+            alert("Mouse down triggered")
+        }
+
+        function mouseUp() {
+            document.getElementById("p2").style.color = "green";
+            alert("Mouse up triggered")
+        }
+        function myFunction() {
+            alert("hyy")
+            document.getElementById("myBtn").addEventListener("click", myFunction);
+        }
+    </script>
+</body>
+
+</html>

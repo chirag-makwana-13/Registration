@@ -58,6 +58,15 @@
             position: relative;
             left: 630px;
         }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: rgb(2, 0, 124);
+            margin-left: 1000px;
+        }
+        a:hover{
+            color: rgb(126, 0, 0);
+        }
     </style>
 </head>
 
@@ -80,6 +89,7 @@
     </table>
     <input type="button" value="+ Column" onclick="addColumn();" id="acolumnButton" />
     <input type="button" value="- Column" onclick="removeColumn();" id="rcolumnButton" />
+    <a href="/newprofile"><-- Back</a>
     <script>
         function addRow() {
             var table = document.getElementById("main");

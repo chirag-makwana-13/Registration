@@ -72,6 +72,15 @@
             color: darkblue;
             font-size: xx-large;
         }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: rgb(2, 0, 124);
+            margin-left: 1000px;
+        }
+        a:hover{
+            color: rgb(126, 0, 0);
+        }
     </style>
 </head>
 
@@ -103,9 +112,10 @@
     <div id="nav">
         <p class="result"></p>
         <div class="reset">
-            <button id="reset" onclick="window.location.href = 'js_ex_3.html';">New Game</button>
+            <button id="reset" onclick="window.location.href = 'tictactoe';">New Game</button>
         </div>
     </div>
+    <a href="/newprofile"> <-- Back</a>
 
     <script>
         document.addEventListener("click", function () {
