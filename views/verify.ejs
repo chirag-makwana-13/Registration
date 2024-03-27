@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>verify</title>
+    <link rel="stylesheet" href="regi.css">
+</head>
+
+<body>
+    <div class="main">
+        <h2>Verification</h2>
+        <!-- <form action="/verify" method="post">
+            <p id="err" style="color: red;"></p>
+            <input type="hidden" id="email" value="<%=email%>" name="email"/>
+            
+            <label for="firstname">Activation code:</label>
+            <input type="text" id="firstname" name="activation_code" placeholder="Activation code" />
+            <p>Activation code here: <b><%=code%></b></p><br>
+              <a href="verify?code=<%=code%>">click</a> 
+
+            <button type="submit">Verify</button>
+        </form> -->
+        <span id="token"><a href="verify?email=<%=email%>&code=<%=code%>">verifyuser</a></span>
+    </div>
+</body>
+<script>
+    try {
+       let err = '<%=err%>' 
+       document.getElementById('err').innerHTML = err
+    } catch (err) {
+        
+    }
+    try {
+        let expire ='<%=expire%>'
+        let email = '<%=email%>'
+        if(expire=='true'){
+            console.log(email);
+                fetch(`http://localhost:3003/activationcode`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({email}),
+                })  
+                .then((response)=> {
+                    return response.json()
+                }).then((data)=>{
+                    console.log(data.activation_code,email);
+                    console.log(`<a href='/verify?email=${email}&activationcode=${data.activation_code}>Verify User</a>`);
+                    document.getElementById('token').innerHTML = `<a href='/verify?email=${email}&code=${data.activation_code}'>Verify User</a>`
+                })
+                document.getElementById('err').innerHTML =err
+        }
+
+            if(err!=''){
+                fetch(`http://localhost:3003/activationcode`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({email}),
+                })  
+                .then((response)=> {
+                    return response.json()
+                }).then((data)=>{
+                    console.log(data.activation_code,email);
+                    console.log(`<a href='/verify?email=${email}&activationcode=${data.activation_code}>Verify User</a>`);
+                    document.getElementById('token').innerHTML = `<a href='/verify?email=${email}&code=${data.activation_code}'>Verify User</a>`
+                })
+            }
+    }
+    
+    catch (error) {
+
+    }
+
+</script>
+</html>

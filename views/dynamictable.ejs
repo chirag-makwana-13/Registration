@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(243, 162, 162);
+            background-color: rgb(10, 0, 73);
+        }
+
+        h2 {
+            color: rgb(10, 0, 73);
+            background-color: rgb(243, 162, 162);
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            background-color: rgb(142, 214, 248);
+        }
+
+        tr {
+            height: 50px;
+            padding: 15px;
+        }
+
+        table {
+            background-color: darkgrey;
+            width: 500px;
+            height: 100%;
+            margin-left: 130px;
+        }
+
+        tr:nth-of-type(odd) td:nth-child(even) ,
+        tr:nth-of-type(even) td:nth-child(odd)  
+        {
+            background: rgb(3, 33, 129);
+        }
+
+        #arowButton,
+        #rrowButton,
+        #acolumnButton,
+        #rcolumnButton {
+            background-color: rgb(248, 228, 44);
+            color: rgb(18, 0, 97);
+        }
+
+        #arowButton,
+        #rrowButton {
+            position: relative;
+            left: 630px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add Rows and Columns </h1>
+    <!-- <hr> -->
+    <h2>Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095 &emsp;&emsp; 01-02-2024</h2>
+    <hr>
+    <input type="button" value="+ Row" onclick="addRow();" id="arowButton" />
+    <input type="button" value="- Row" onclick="removeRow();" id="rrowButton" />
+    <table id="main">
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <input type="button" value="+ Column" onclick="addColumn();" id="acolumnButton" />
+    <input type="button" value="- Column" onclick="removeColumn();" id="rcolumnButton" />
+    <script>
+        function addRow() {
+            var table = document.getElementById("main");
+            var rws = table.rows;
+            var cols = table.rows[0].cells.length;
+            var row = table.insertRow(rws.length);
+            var cell;
+            for (var i = 0; i < cols; i++) {
+                cell = row.insertCell(i);
+            }
+        }
+
+        function removeRow() {
+
+            var table = document.getElementById("main");
+            let rws = table.rows.length;
+            if (rws > 2) {
+                table.deleteRow(-1)
+            }
+            else {
+                alert("Can not Delete Rows")
+            }
+        }
+
+        function addColumn() {
+            var table = document.getElementById("main");
+            var rws = table.rows;
+            var cols = table.rows[0].cells.length;
+            var cell;
+            for (var i = 0; i < rws.length; i++) {
+                cell = rws[i].insertCell(cols - 1);
+            }
+        }
+        function removeColumn() {
+            var table = document.getElementById("main");
+            var rws = table.rows;
+            var cols = table.rows[0].cells.length;
+            var cell;
+            if (cols > 2) {
+                for (var i = 0; i < rws.length; i++) {
+                    cell = rws[i].deleteCell(2);
+                }
+            }
+            else {
+                alert("Can not Delete Columns")
+            }
+        }
+    </script>
+</body>
+
+</html>

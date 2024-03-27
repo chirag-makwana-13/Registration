@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #b4c8f1, #4acbe2);
+            color: #f4d4de;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+            font-size: 30px;
+            color: rgb(7, 0, 100);
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 35px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 75px;
+            margin: 2px;
+            width: 75px;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 500;
+            color: black;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .winning-btn {
+            background-color: #47c847;
+        }
+
+        .header h1 {
+            position: relative;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: darkslategray;
+        }
+
+        .result {
+            color: darkblue;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Tic Tac Toe</h1>
+    </div>
+    <hr>
+    <h2>Name: Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095 &emsp;&emsp; Date:5-2-2024</h2>
+    <hr>
+    <div class="box">
+        <div class="row">
+            <input class="btn" type="text" readonly>
+            <input class="btn" type="text" readonly>
+            <input class="btn" type="text" readonly>
+        </div>
+        <div class="row">
+            <input class="btn" type="text" readonly>
+            <input class="btn" type="text" readonly>
+            <input class="btn" type="text" readonly>
+        </div>
+        <div class="row">
+            <input class="btn" type="text" readonly>
+            <input class="btn" type="text" readonly>
+            <input class="btn" type="text" readonly>
+        </div>
+    </div>
+    <div id="nav">
+        <p class="result"></p>
+        <div class="reset">
+            <button id="reset" onclick="window.location.href = 'js_ex_3.html';">New Game</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("click", function () {
+            let currentPlayer = "X";
+            const btns = document.querySelectorAll(".btn");
+            const result = document.querySelector(".result");
+
+            btns.forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    if (btn.value === "") {
+                        btn.value = currentPlayer;
+                        if (checkWinner()) {
+                            result.textContent = currentPlayer + " wins!";
+                            btns.forEach(function (btn) {
+                                btn.disabled = true;
+                            });
+                        } else if (checkDraw()) {
+                            result.textContent = "It's a draw!";
+                        } else {
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+                        }
+                    }
+                });
+            });
+
+            function checkWinner() {
+                const winningCombinations = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+                ];
+
+                for (const combo of winningCombinations) {
+                    const [a, b, c] = combo;
+                    if (
+                        btns[a].value === currentPlayer &&
+                        btns[b].value === currentPlayer &&
+                        btns[c].value === currentPlayer
+                    ) {
+                        btns[a].classList.add("winning-btn");
+                        btns[b].classList.add("winning-btn");
+                        btns[c].classList.add("winning-btn");
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            function checkDraw() {
+                for (let i = 0; i < 9; i++) {
+                    if (btns[i].value === "") {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        });
+    </script>
+</body>
+
+</html>

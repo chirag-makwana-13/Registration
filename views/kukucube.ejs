@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js game</title>
+    <h1>Cube Game</h1>
+    <hr>
+    
+    <style>
+        h1{
+            text-align: center;
+        }
+        body {
+            background-color: rgb(186, 255, 249);
+        }
+                        
+        table {
+            margin-top: 150px;
+            height: auto;
+            width: auto;
+            display: flex;
+            justify-content: center;
+         
+        }
+
+        tr { 
+            padding: 15px;     
+        }
+
+        td {
+            padding: 30px;
+            border: 1px solid black;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #timer{
+            float: right;
+        }
+        #count{
+            float: left;
+        }
+    </style>
+</head>
+
+<body onload="haBox()">
+    <h1 style="text-align: center;">Name: Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095<span style="float: right;">Date : 02/02/24</span></h1>
+    <hr>
+    <h2></h2>
+    <div id="count">
+        <h2>Score:<span id="count_value"></span></h2>
+    </div>
+    <div id="timer">
+        <h4 id="countdown"></h4>
+    </div>
+        <table id="main" cellspacing="0" cellpadding="0">
+            <tr id="tr">
+                <td id="a1" class="td"> </td>
+                <td id="a2" class="td"></td>
+            </tr>
+            <tr>
+                <td id="a3" class="td"></td>
+                <td id="a4" class="td"></td>
+            </tr>
+        </table>
+    <script>
+        var value = 0;
+        var timeleft =10;
+        var timer = setInterval(function(){
+            if (timeleft <=0){
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML="finished";
+                document.getElementsByTagName("body")[0].innerHTML=
+                `<h1 style="margin-top:300px;margin-left:50%">Your score: ${value}</h1>`;
+                const btn =document.createElement('button');
+                btn.innerHTML="play again"
+                btn.style.marginleft = '50%'
+                btn.style.fontSize="20px"
+                btn.addEventListener("click",function(){
+                    window.location.reload()
+                });
+                document.getElementsByTagName("body")[0].appendChild(btn);
+            }
+                else{
+                document.getElementById("countdown").innerHTML=timeleft+ "seconds remaining";    
+            }
+            timeleft -=1;
+        },1000);
+        console.log(timer);
+
+        function addRow() {
+            var table = document.getElementById("main");
+            var rws = table.rows;
+            var cols = table.rows[0].cells.length;
+            var row = table.insertRow(rws.length);
+            var cell;
+            for (var i = 0; i < cols; i++) {
+                cell = row.insertCell(i);
+            }
+            for (var i = 0; i < rws.length; i++) {
+                cell = rws[i].insertCell(cols - 1);
+            }
+        
+        }
+        function genColor(){
+            red = Math.floor(Math.random()*(255-0+1));
+            green = Math.floor(Math.random()*(255-0+1));
+            blue = Math.floor(Math.random()*(255-0+1));
+            return{red,green,blue};
+        }
+        function haBox(){
+            val1=genColor().red;
+            val2=genColor().green;
+            val3=genColor().blue;
+            table=document.getElementsByTagName("table");
+            td=table[0].getElementsByTagName("td");
+            var randomBox = Math.floor(Math.random()*(td.length - 0));
+            for (let i=0;i<td.length;i++){
+                if(i===randomBox){
+                    td[i].style.backgroundColor = "rgba("+val1+","+val2+","+val3+",0.5)";
+                } else{
+                    td[i].style.backgroundColor  = "rgba("+val1+","+val2+","+val3+")";
+                    td[i].removeEventListener("click",handleInsert);
+                }
+            }
+            td[randomBox].addEventListener("click",handleInsert);
+        }
+        function handleInsert(){
+            addRow();
+            haBox();
+            value++;
+            document.getElementById('count_value').innerHTML=value;
+        }
+    </script>
+</body>
+
+</html>
