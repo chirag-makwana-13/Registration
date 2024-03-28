@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Dynamic data</title>
+    <style>
+        body {
+            background-color: rgb(185, 218, 250);
+            max-width: 1400px;
+            /* margin: 0 auto; */
+            padding: 10px;
+        }
+
+        button {
+            height: 50px;
+            border: none;
+            background-color: rgb(185, 218, 250);
+            font-size: 20px;
+            padding: 15px 15px;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            background-color: rgb(217, 215, 250);
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+            /* margin:0 auto */
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            margin: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Chirag Makwana <br>( ID:24DEV095 )</h1>
+    <h2>Your table data</h2>
+    <%- include('./paging.ejs');%>
+    <table>
+        <% for(let val of data){%>
+            <%const fieldnames=Object.keys(val);%>
+                <tr>
+                    <%for(var i=0;i<fieldnames.length;i++){%>
+                        <th >
+                            <%=fieldnames[i]%>
+
+                        </th>
+                        <%}%>
+                </tr>
+                <%break;%>      
+                    <%}%>
+                        <% for(let key of data){%>
+                            <%const fieldValues=Object.values(key);%>
+                                <tr>
+                                    <%for(var i=0  ;i<fieldValues.length;i++){%>
+                                        <td>
+                                            <%=fieldValues[i]%>
+
+                                        </td>
+                                        <%}%>
+                                </tr>
+                                <%}%>
+    </table>
+</body>
+<script>        
+    const ochange = (event)=>{
+        console.log(event.target.innerText.split(' '));
+        field = event.target.innerText.split(' ')[0]
+        url=window.localStorage.href;
+        if(url.includes('asc')){
+            window.location.href='/grid/<%=who%>/<%=pageno%>?orderby=' + field + '&ordedir=desc';
+        }else{
+            window.location.href='/grid/<%=who%>/<%=pageno%>?orderby=' + field + '&ordedir=asc';
+        }
+    }
+</script>
+</html>

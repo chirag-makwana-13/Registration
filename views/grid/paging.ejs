@@ -1,0 +1,24 @@
+<div class="pagination">
+    <% if(pageno==1){ %>
+        <button disabled>
+            << </button>
+                <button disabled>
+                    < </button>
+                        <%} else { %>
+                            <a href="/grid/<%=who%>/1?query=<%=query%>"><button>
+                                    << </button></a>
+                            <a href="/grid/<%=who%>/<%=pageno-1%>?query=<%=query%>"><button>
+                                    < </button></a>
+                            <% } %>
+
+                                <button>
+                                    <%=pageno%>
+                                </button>
+                                <% if(pageno==4){ %>
+                                    <button disabled> > </button>
+                                    <button disabled> >> </button>
+                                    <%} else { %>
+                                        <a href="/grid/<%=who%>/<%=pageno+1%>?query=<%=query%>"><button> > </button></a>
+                                        <a href="/grid/<%=who%>/4?query=<%=query%>"><button> >> </button></a>
+                                        <% } %>
+</div>
