@@ -33,7 +33,9 @@
             padding: 10px;
             margin-left: 350px;
         }
-
+        h4{
+            text-align: right;
+        }
         h1,
         h3 {
             text-align: center;
@@ -89,9 +91,9 @@
 </head>
 
 <body>
-    <h1>Chirag Makwana <br>( ID:24DEV095 )</h1>
     <%- include('./search.ejs');%>
-    <h1><a href="/attendance/exam">Exam Data Here</a></h1></h1>
+    <h4><a href="/newprofile">Back to Home</a></h4>
+    <h4><a href="/attendance/exam">Exam Data Here</a></h4>
     <select id="months" onchange="selectmonth(value)">
         <option value="12">December-2023</option>
         <option value="1">January-2024</option>

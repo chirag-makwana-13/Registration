@@ -37,8 +37,8 @@ app.use('/studentdb',require('./routes/studentcruddb/studentcruddb'))
 app.use('/attendance',require('./routes/attendance/attendance'))
 app.use('/delimeter',require('./routes/delimeter/delimeter'))
 app.use('/grid',require('./routes/grid/grid'))
-
-
+app.use('/jobapplicaiton',require('./routes/jobapplicaiton/jobapplicaiton'))
+app.use('/ajaxjobapplicaiton',require('./routes/ajaxjobapplicaiton/ajaxjobapplicaiton'))
 
 
 

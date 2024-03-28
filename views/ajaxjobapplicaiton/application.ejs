@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD AJAX </title>
+</head>
+<style>
+    body{
+    background-color: aliceblue;
+}
+h1 {
+    text-align: center;
+    color: rgb(1, 59, 124);
+    /* background-color: rgb(210, 237, 250); */
+}
+fieldset{
+    background-color:rgb(165, 206, 253);
+}
+.err-red{
+    color: rgb(196, 0, 0);
+} 
+#submit{
+    border: 1px solid black;
+    background-color:rgb(215, 215, 250) ;
+    font-size: 30px;
+    margin-left: 1164px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+#submit:hover {
+    border: 2px solid white;
+    background-color: rgb(10, 58, 0);
+    color: rgb(152, 255, 169);
+}
+.pre,.next{
+    border: none;
+    /* background-color:rgb(167, 100, 255) ; */
+    font-size: 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    /* margin-left: 1250px; */
+}
+
+.next:hover{
+    background-color: rgb(7, 0, 49);
+    color: rgb(152, 209, 255);
+}
+.pre:hover{
+    background-color: rgb(7, 0, 49);
+    color: rgb(152, 209, 255);
+}
+</style>
+
+<body>
+    <% let basic=data[0]%>
+    <% let eduction_details=data[1]%>
+    <% let work_details=data[2]%>
+    <% let referance=data[3]%>
+    <% let preferance=data[4]%>
+    <% let langknown=data[5]%>
+    <% let techknown=data[6]%>
+    <h1>Job Application Form AJAX</h1>
+    <hr>
+    <h2>Name: Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095</h2>
+    <a href="/newprofile">Back to home</a>
+    <!-- <h1><%=basic[0].f_name%>ef</h1> -->
+    <!-- <form action="<%=basic[0].f_name?'/update':'/form'%>" method="post" onsubmit="return valid()"> -->
+    <!-- Basic Details  -->
+    <fieldset class="event" id="basic">
+        <legend>
+            <h2>Basic Details</h2>
+        </legend>
+        <input type="hidden" name="id" id="c_id" class="basic" value="<%=basic[0].c_id%>">
+        <label for="fname">First Name :</label>
+        <input type="text" id="fname" tabindex="1" name="fname" class="basic" class="requried" placeholder="Your name"
+            value="<%=basic[0].f_name%>">
+        <span class="error err-red" id="error-fname"></span>
+        <br>&emsp;<br>
+        <label for="lname">Last Name :</label>
+        <input type="text" id="lname" tabindex="2" name="lname" class="basic" class="requried"
+            placeholder="Your surname" value="<%=basic[0].l_name%>">
+        <span class="error err-red" id="error-lname"></span>
+        <br>&emsp;<br>
+        <label for="designation">Designation :</label>
+        <input type="text" id="designation" tabindex="3" name="designation" class="basic" class="requried"
+            placeholder="software" value="<%=basic[0].designation%>">
+        <span class="error err-red" id="error-designation"></span>
+        <br>&emsp;<br>
+        <label for="address1">Address1 :</label>
+        <textarea name="address1" id="address1"  class="basic" cols="40" rows="2" class="requried" placeholder="S.G.highway"
+            class="basic"><%=basic[0].address1%></textarea>
+        <span class="error err-red" id="error-address1"></span>
+        &emsp;
+        <label for="address2">Address2 :</label>
+        <textarea name="address2" id="address2" cols="40" rows="2" class="basic"></textarea>
+        <br>&emsp;<br>
+        <label for="email">Email :</label>
+        <input type="text" id="email" name="email" class="basic" class="requried" placeholder="abc@gmail.com"
+            value="<%=basic[0].email%>">
+        <span class="error err-red" id="error-email"></span>
+        &emsp;
+        <label for="pnumber">Phone Number :</label>
+        <input type="text" id="pnumber" name="pnumber" class="basic" class="requried" placeholder="Ex. 9876543210"
+            value="<%=basic[0].mobielnumber%>">
+        <span class="error err-red" id="error-pnumber"></span>
+        <br>&emsp;<br>
+        <!-- <label for="city">City :</label> -->
+        <!-- <input type="text" id="city" name="city" class="basic" class="requried" placeholder="Ahmedabad"
+            value="<%=basic[0].city%>"> -->
+        <span class="error err-red" id="error-city"></span>
+            
+        <label for="state">Select state :</label>
+        <select id="state" name="state" class="basic" onchange="getcity()" >
+            <option value="" checked>Select state</option>
+            <option <% if(basic[0].state) { %> value = "<%=basic[0].state%>" <%}%> hidden
+                        checked>
+                        <%=basic[0].state%>
+            </option>
+            <option value=22>gujarat</option>
+            <option value=23>maharastra</option>
+            <option value=24>rajsthan</option>
+            <!-- <option value="mp">mp</option>
+            <option value="jammukashmir">jammukashmir</option> -->
+        </select>
+        <br>&emsp;<br>
+        <label for="city">City :</label>
+        <select id="city" name="city" class="basic">
+            <option value="" checked> Select city</option>
+            <option <% if(basic[0].state) { %> value = "<%=basic[0].city%>" <%}%> hidden
+                        checked>
+                        <%=basic[0].city%>
+            </option>
+        </select>
+        <br>&emsp;<br>
+        <label for="gender">Gender :</label>
+        <input type="radio" name="gender" id="gender" class="basic" value="male" <%=(basic[0].gender=='male' )?'checked':''%> > Male
+        <input type="radio" name="gender" id="gender" class="basic" value="female" <%=(basic[0].gender=='female' )?'checked':''%> >
+        Female
+        <input type="radio" name="gender" id="gender" class="basic" value="other"> Other
+        &emsp; &emsp;
+        <label for="zip code">Zipcode :</label>
+        <input type="text" id="zipcode" name="zipcode" class="basic" class="requried" placeholder="3610005"
+            value="<%=basic[0].zipcode%>">
+        <span class="error err-red" id="error-zipcode"></span>
+        <br>&emsp;<br>
+        <label for="relationship">Relationship :</label>
+        <select id="relationship" name="relationship" class="basic">
+
+            <option value="" hidden checked>
+                <%=basic[0].reltionship_status%>
+            </option>
+            <option value="unmarried">unmarried</option>
+            <option value="married">married</option>
+        </select>
+        &emsp;
+        <label for="dob">DOB :</label>
+        <input type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" class="basic" class="requried" >
+                <span class="error err-red" id="error-dob"></span>
+                <br><br>
+                <button class="next">next</button>
+    </fieldset>
+
+    <!-- Eduction -->
+    <fieldset class="event" id="eduction" style="display: none;">
+        <legend>
+            <h2>Eduction Details</h2>
+        </legend>
+        <span onclick="addfunc('ed','echild')" style="cursor: pointer; color: rgb(0, 60, 255);">Add
+            (+)</span>&emsp;&emsp;
+        <span onclick="deletefunc('ed','echild')" style="cursor: pointer; color: rgb(0, 60, 255);">Delete (-)</span>
+        <span id="check-all-fill-or-not-educ" class="error err-red"></span>
+        <div id="ed">
+            <div id="echild"><br>
+                <label for="board">Name of Board / Course :</label>
+                <input type="hidden" name="edu_id[]" class="eduction" id="edu_id" value="<%=eduction_details[0].e_id%>">
+                <input type="text" id="board" name="board[]" class="eduction" class="check-all-fill-or-not-educ"
+                    placeholder="SSC" value="<%=eduction_details[0].course_name%>">
+                &emsp;
+                <label for="pyear1">Passing year :</label>
+                <input type="text" id="pyear1" name="pyear1[]" class="eduction" class="check-all-fill-or-not-educ"
+                    placeholder="2018" value="<%=eduction_details[0].passing_year%>">
+                &emsp;
+                <label for="percentage1">Percentage :</label>
+                <input type="text" id="percentage" name="percentage[]" class="eduction" class="percentage"
+                    placeholder="50.00" class="check-all-fill-or-not-educ" value="<%=eduction_details[0].percantage%>">
+                <span class="error err-red" id="error-percentage"></span>
+            </div>
+            <div id="echild"><br>
+                <label for="board">Name of Board / Course :</label>
+                <input type="hidden" class="eduction" id="edu_id" name="edu_id[]" value="<%=eduction_details[1].e_id%>">
+                <input type="text" id="board" name="board[]" class="eduction" class="check-all-fill-or-not-educ"
+                    placeholder="SSC" value="<%=eduction_details[1].course_name%>">
+                &emsp;
+                <label for="pyear">Passing year :</label>
+                <input type="text" id="pyear1" name="pyear1[]" class="eduction" class="check-all-fill-or-not-educ"
+                    placeholder="2018" value="<%=eduction_details[1].passing_year%>">
+                &emsp;
+                <label for="percentage1">Percentage :</label>
+                <input type="text" id="percentage" name="percentage[]" class="eduction" class="percentage"
+                    placeholder="50.00" class="check-all-fill-or-not-educ" value="<%=eduction_details[1].percantage%>">
+                <span class="error err-red" id="error-percentage"></span>
+            </div>
+        </div><br><br>
+        <button class="pre">pre</button>
+        <button class="next">next</button>
+    </fieldset>
+
+    <!-- Work Experience -->
+    <fieldset class="event" id="work" style="display: none;">
+        <legend>
+            <h2>Work Experience</h2>
+        </legend>
+        <span onclick="addfunc('we','wchild')" style="cursor: pointer; color: rgb(0, 60, 255);">Add
+            (+)</span>&emsp;&emsp;
+        <span onclick="deletefunc('we','wchild')" style="cursor: pointer; color: rgb(0, 60, 255);">Delete (-)</span>
+        <span id="check-all-fill-or-not-work" class="error err-red"></span>
+        <div id="we">
+            <div id="wchild"><br>
+                <label for="company Name">Company Name :</label>
+                <input type="text" id="company1" class="work" class="check-all-fill-or-not-work" name="company1[]"
+                    placeholder="Google" value="<%=work_details[0].company_name%>">
+                &emsp;
+                <label for="Designation">Designation :</label>
+                <input type="text" id="company_designation1" class="work" class="check-all-fill-or-not-work"
+                    name="company_designation1[]" placeholder="software engineer"
+                    value="<%=work_details[0].company_designation%>">
+                &emsp;
+                <label for="from">From :</label>
+                <input type="text" id="from1" name="from1[]" class="work" class="check-all-fill-or-not-work"
+                    placeholder="YYYY-MM-DD" <% if(work_details[0].from_1) { %> value = " <%=
+                    (work_details[0].from_1.getFullYear()) + '-' + (work_details[0].from_1.getMonth() +1) + '-' +
+                    work_details[0].from_1.getDate()%>" <%} %>"
+                        &emsp;
+                        <label for="to">To :</label>
+                        <input type="text" id="to1" name="to1[]" class="work" class="check-all-fill-or-not-work"
+                            placeholder="YYYY-MM-DD" <% if(work_details[0].to_1) { %> value = " <%=
+                            (work_details[0].to_1.getFullYear()) + '-' + (work_details[0].to_1.getMonth() +1) + '-' +
+                            work_details[0].to_1.getDate()%>" <%} %>"
+
+            </div>
+        </div><br><br>
+        <button class="pre">pre</button>
+        <button class="next">next</button>
+    </fieldset>
+
+    <!-- Language Known -->
+    <fieldset class="event" id="language" style="display: none;">
+        <legend>
+            <h2>Language Known</h2>
+        </legend>
+        <input type="checkbox" id="hindi" class="language" name="language[]" value="hindi" class="lancheck"
+            onclick="enDisFields('h')">
+        <label for="hindi"> Hindi</label>
+        &emsp;
+        <input type="checkbox" id="hindiread" class="language" name="hindiread" value="hindiread" class="sub-hfield hindi">
+        <label for="hindiread"> Read</label>
+        &emsp;
+        <input type="checkbox" id="hindiwrite" class="language" name="hindiwrite" value="hindiwrite"
+            class="sub-hfield hindi">
+        <label for="hindiwrite "> Write</label>
+        &emsp;
+        <input type="checkbox" id="hindispeack" class="language" name="hindispeack" value="hindispeack"
+            class="sub-hfield hindi">
+        <label for="hindispeack">Speak</label>
+        <br>
+
+        <input type="checkbox" id="guj" name="language[]" class="language" value="guj" class="lancheck"
+            onclick="enDisFields('g')">
+        <label for="guj">Gujarati</label>
+        &emsp;
+        <input type="checkbox" id="gujread" name="guj" class="language" value="gujread" class="sub-gfield guj">
+        <label for="gujread"> Read</label>
+        &emsp;
+        <input type="checkbox" id="gujwrite" name="guj" class="language" value="gujwrite" class="sub-gfield guj">
+        <label for="gujwrite"> Write</label>
+        &emsp;
+        <input type="checkbox" id="gujspeack" name="guj" class="language" value="gujspeack" class="sub-gfield guj">
+        <label for="gujspeack">Speak</label>
+        <br>
+        <input type="checkbox" id="eng" name="language[]" value="eng" class="language" class="lancheck"
+            onclick="enDisFields('e')">
+        <label for="eng">English</label>
+        &emsp;
+        <input type="checkbox" id="engread" name="eng" value="engread" class="language" class="sub-efield eng">
+        <label for="engread"> Read</label>
+        &emsp;
+        <input type="checkbox" id="engwrite" name="eng" value="engwrite" class="language" class="sub-efield eng">
+        <label for="engwrite"> Write</label>
+        &emsp;
+        <input type="checkbox" id="engspeack" name="eng" value="engspeack" class="language" class="sub-efield eng">
+        <label for="engspeack">Speak</label><br><br>
+        <button class="pre">pre</button>
+        <button class="next">next</button>
+    </fieldset>
+
+    <!-- Technologies -->
+    <fieldset class="event" id="technology" style="display: none;">
+        <legend>
+            <h2>Technologies you known</h2>
+        </legend>
+        <input type="hidden" name="tech_id[]" value="<%=techknown[0]?techknown[0].t_id:''%>">
+        <input type="checkbox" id="php" name="tech[]" class="technology" value="php" class="techcheck"
+            onclick="enDisFields('p')">
+        <label for="php"> PHP</label>
+        &emsp;
+        <input type="radio" name="php[]" id="pbeginer" class="technology" value="beginer" class="sub-pfield php">
+        <label for="phpb"> Beginer</label>
+        &emsp;
+        <input type="radio" name="php[]" value="mideator" class="technology" id="pmideator" class="sub-pfield php">
+        <label for="phpm"> Mideator</label>
+        &emsp;
+        <input type="radio" name="php[]" value="expert" class="technology" id="pexpert" class="sub-pfield php">
+        <label for="phpe">Expert</label>
+        <br>
+        <input type="hidden" name="tech_id[]" value="<%=techknown[1]?techknown[1].t_id:''%>">
+        <input type="checkbox" id="java" name="tech[]" class="technology" value="java" class="techcheck"
+            onclick="enDisFields('j')">
+        <label for="java"> JAVA</label>
+        &emsp;
+        <input type="radio" name="java[]" value="beginer" class="technology" id="jbeginer" class="sub-jfield java">
+        <label for="javab"> Beginer</label>
+        &emsp;
+        <input type="radio" name="java[]" value="mideator" class="technology" id="jmideator" class="sub-jfield java">
+        <label for="javam"> Mideator</label>
+        &emsp;
+        <input type="radio" name="java[]" value="expert" class="technology" id="jexpert" class="sub-jfield java">
+        <label for="javae">Expert</label>
+        <br>
+        <input type="hidden" name="tech_id[]" value="<%=techknown[2]?techknown[2].t_id:''%>">
+        <input type="checkbox" id="sql" name="tech[]" class="technology" value="sql" class="techcheck"
+            onclick="enDisFields('s')">
+        <label for="sql"> Mysql</label>
+        &emsp;
+        <input type="radio" name="sql[]" value="beginer" class="technology" id="sbeginer" class="sub-sfield sql">
+        <label for="sqlb"> Beginer</label>
+        &emsp;
+        <input type="radio" name="sql[]" value="mideator" class="technology" id="smideator" class="sub-sfield sql">
+        <label for="sqlm"> Mideator</label>
+        &emsp;
+        <input type="radio" name="sql[]" value="expert" class="technology" id="sexpert" class="sub-sfield sql">
+        <label for="sqle">Expert</label>
+        <br>
+        <input type="hidden" name="tech_id[]" value="<%=techknown[3]?techknown[3].t_id:''%>">
+        <input type="checkbox" id="oracle" name="tech[]" class="technology" value="oracle" class="techcheck"
+            onclick="enDisFields('o')">
+        <label for="oracle"> Oracle</label>
+        &emsp;
+        <input type="radio" name="oracle[]" value="beginer" class="technology" id="obeginer" class="sub-ofield oracle">
+        <label for="oracleb"> Beginer</label>
+        &emsp;
+        <input type="radio" name="oracle[]" value="mideator" class="technology" id="omideator"
+            class="sub-ofield oracle">
+        <label for="oraclem"> Mideator</label>
+        &emsp;
+        <input type="radio" name="oracle[]" value="expert" class="technology" id="oexpert" class="sub-ofield oracle">
+        <label for="oraclee">Expert</label>
+        <br><br>
+        <button class="pre">pre</button>
+        <button class="next">next</button>
+    </fieldset>
+
+    <!-- Referance -->
+    <fieldset class="event" id="referance1" style="display: none;">
+        <legend>
+            <h2>Referance Contact</h2>
+        </legend>
+        <span onclick="addfunc('referance','referancechlid')" style="cursor: pointer; color: rgb(0, 60, 255);">Add
+            (+)</span>&emsp;&emsp;
+        <span onclick="deletefunc('referance','referancechlid')" style="cursor: pointer; color: rgb(0, 60, 255);">Delete
+            (-)</span>
+        <span id="check-all-fill-or-not-ref" class="error err-red"></span>
+        <div id="referance">
+            <div id="referancechlid"><br>
+                <label for="name">Name :</label>
+                <input type="text" id="rname" name="rname" class="referance1" placeholder="Relative name"
+                    class="check-all-fill-or-not-ref" value="<%=referance[0].r_name%>">
+                &emsp;
+                <label for="contactnumber">Contact Number :</label>
+                <input type="text" id="cnumber" name="cnumber" class="referance1" placeholder="9876543210"
+                    class="check-all-fill-or-not-ref" value="<%=referance[0].r_number%>">
+                &emsp;
+                <label for="relation">Relation :</label>
+                <input type="text" id="relation" name="relation" class="referance1" placeholder="Friend"
+                    class="check-all-fill-or-not-ref" value="<%=referance[0].r_relation%>">
+                <br>
+            </div>
+        </div><br><br>
+        <button class="pre">pre</button>
+        <button class="next">next</button>
+    </fieldset>
+
+    <!-- Preferances -->
+    <fieldset class="event" id="preferance1" style="display: none;">
+        <legend>
+            <h2>Preferances</h2>
+        </legend>
+        <label for="location">Preferd location :</label>
+        <select id="plocation" name="plocation" class="preferance1">
+            <!-- <option value="select">select</option> -->
+            <option <% if(preferance[0].p_location) { %> value="
+                <%=preferance[0].p_location%>" <%}%> hidden checked>
+                        <%=preferance[0].p_location%>
+            </option>
+            <option value="ahmedabad">ahmedabad</option>
+            <option value="surat">surat</option>
+            <option value="gandhinagar">gandhinagar</option>
+            <option value="rajkot">rajkot</option>
+        </select>
+        &emsp;
+        <label for="nperiod">Notice period :</label>
+        <input type="text" id="nperiod" name="nperiod" class="preferance1" class="requried" placeholder="6 months"
+            value="<%=preferance[0].notice_period%>">
+        <span class="error err-red" id="error-nperiod"></span>
+        &emsp;
+        <label for="department">Department :</label>
+        <select id="dep" name="department" class="preferance1">
+            <!-- <option value="select">select</option> -->
+            <option <% if(preferance[0].department) { %> value="
+                <%=preferance[0].department%>" <%}%> hidden checked>
+                        <%=preferance[0].department%>
+            </option>
+            <option value="design" class="check">design</option>
+            <option value="market" class="check">marketing</option>
+            <option value="software" class="check">software</option>
+        </select>
+        <br><br>
+        <label for="ectc">Expacted CTC :</label>
+        <input type="text" id="ectc" name="ectc" class="preferance1" class="requried" placeholder="9.5 in(LPA)">
+        <span class="error err-red" id="error-ectc"></span>
+        &emsp;
+        <label for="cctc">Current CTC :</label>
+        <input type="text" id="cctc" name="cctc" class="preferance1" class="requried" placeholder="4.5 in(LPA)">
+        <span class="error err-red" id="error-cctc"></span><br><br>
+        <button class="pre">pre</button><br><br>
+        <input type="button" value="save" onclick="save()">
+        <a href="/newprofile">Back to home</a>
+        <!-- <input type="submit" value="submit" id="submit" > -->
+    </fieldset>
+
+    <!-- <input type="reset" value="clear" onclick="winreload()"> -->
+</body>
+<script>
+    function getcity(){
+        let stateId = document.getElementById('state')
+        let cityId = document.getElementById('city')
+        cityId.innerHTML = ""
+        fetch(`http://localhost:3003/ajaxjobapplicaiton/city?state_id=${stateId.value}`, {
+            method: "GET", // *GET, POST, PUT, DELETE, etc.
+            mode: "same-origin", // no-cors, *cors, same-origin
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then(data=>{
+            // data= result.data;
+            console.log(data);
+            data = data.result
+            for(let i=0;i<data.length;i++){
+                let opt = document.createElement("option")
+                opt.value = data[i].id
+                opt.text=data[i].name;
+                cityId.options.add(opt);
+            }
+        });
+    }
+
+
+    let c_id='';
+    let mode = '<%-JSON.stringify(mode)%>';
+    const event = document.querySelectorAll('.event');
+    const next = document.querySelectorAll('.next');
+    const pre = document.querySelectorAll('.pre');
+    if(mode=='"update"'){
+        c_id=prompt("Enter id")
+    }
+    // next button
+    next.forEach(function (button, index) {
+        // console.log("button:"+button+"index:"+index);
+        button.addEventListener('click', function () {
+            let object = {}
+            let language_value=[];
+            let hindi_value=[];
+            let english_value=[];
+            let gujarati_value=[];
+            event[index].style.display = "none"
+            event[index + 1].style.display = "block";
+
+            [...document.querySelectorAll(`.${event[index].id}`)].map((element) => {
+                console.log("id:" + element.id + "value:" + element.value);
+                object["c_id"] = c_id;
+                if (event[index].id=='eduction'||event[index].id=='work' ||event[index].id=='referance1' ) {
+                    if(object.hasOwnProperty(element.id)){
+                        object[element.id].push(element.value)
+                    }else{
+                        object[element.id]=[]
+                        object[element.id].push(element.value)
+                    }
+                }
+                else{
+                    object[element.id] = element.value
+                }
+            })
+            if(mode=='"update"'){
+                updatedata(object,event[index].id)
+            }
+            else{
+
+                data(object,event[index].id)
+            }
+        })
+    });
+    //save
+    function save(){
+        let object ={};
+        object["c_id"] = c_id;
+        [...document.querySelectorAll(`.preferance1`)].map((element) => {
+            object[element.id] = element.value
+        })
+        if(mode=='"update"'){
+            updatedata(object,'preferance1')
+        }
+        else{
+                data(object,'preferance1')
+
+            }
+        console.log('hjkk',object);
+    }
+    // fetch data
+    function data(object,route) {
+        console.log(route);
+        console.log("object" + JSON.stringify(object)); 
+        fetch(`http://localhost:3003/ajaxjobapplicaiton/${route}`, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "same-origin", // no-cors, *cors, same-origin
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(object)
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then(data=>{
+            if(c_id==''){
+                c_id=data.c_id;
+            }
+            console.log(JSON.stringify(data));
+        });
+    }
+
+    function updatedata(object,route) {
+        console.log(route);
+        console.log("object" + JSON.stringify(object)); 
+        fetch(`http://localhost:3003/ajaxjobapplicaiton/update${route}`, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "same-origin", // no-cors, *cors, same-origin
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(object)
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then(data=>{
+            if(c_id==''){
+                c_id=data.c_id;
+            }
+            console.log(JSON.stringify(data));
+        });
+    }
+    // previous button
+    pre.forEach(function (button, index) {
+        // console.log("button:"+button+"index:"+index);
+        button.addEventListener('click', function () {
+            event[index + 1].style.display = "none"
+            event[index].style.display = "block"
+        })
+    });
+
+
+</script>
+
+</html>

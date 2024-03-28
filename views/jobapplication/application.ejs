@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Job application form</title>
+</head>
+<style>
+    body{
+    background-color: rgb(215, 215, 250);
+}
+h1 {
+    text-align: center;
+    color: rgb(1, 59, 124);
+    /* background-color: rgb(210, 237, 250); */
+}
+fieldset{
+    background-color:rgb(210, 250, 243);
+}
+.err-red{
+    color: rgb(196, 0, 0);
+} 
+#submit{
+    border: 1px solid black;
+    background-color:rgb(215, 215, 250) ;
+    font-size: 30px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+#submit:hover {
+    border: 2px solid white;
+    background-color: rgb(10, 58, 0);
+    color: rgb(152, 255, 169);
+}
+</style>
+
+<body>
+    <% let basic=data[0]%>
+    <% let eduction_details=data[1]%>
+    <% let work_details=data[2]%>
+    <% let referance=data[3]%>
+    <% let preferance=data[4]%>
+    <% let langknown=data[5]%>
+    <% let techknown=data[6]%>
+    <h1>Job Application Form</h1>
+    <h2> <a href="http://localhost:3003/jobapplicaiton/form/147">Update</a></h2>
+    <h2><a href="http://localhost:3003/jobapplicaiton/home">Insert</a></h2>
+    <hr>
+    <h2>Name: Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095</h2>
+    <h4 style="text-align: right;"><a href="/newprofile">Back to Home</a></h4>
+    <!-- <h1><%=basic[0].f_name%>ef</h1> -->
+    <form action="<%=basic[0].f_name?'/jobapplicaiton/update':'/jobapplicaiton/form'%>" method="post" onsubmit="return valid()">
+        <!-- Basic Details  -->
+        <fieldset>
+            <legend>
+                <h2>Basic Details</h2>
+            </legend>
+            <input type="hidden" name="id" id="" value="<%=basic[0].c_id%>">
+            <label for="fname">First Name :</label>
+            <input type="text" id="fname " tabindex="1" name="fname" class="requried" placeholder="Your name"
+                value="<%=basic[0].f_name%>">
+            <span class="error err-red" id="error-fname"></span>
+            &emsp;
+            <label for="lname">Last Name :</label>
+            <input type="text" id="lname" tabindex="2" name="lname" class="requried" placeholder="Your surname"
+                value="<%=basic[0].l_name%>">
+            <span class="error err-red" id="error-lname"></span>
+            <br>&emsp;<br>
+            <label for="designation">Designation :</label>
+            <input type="text" id="designation" tabindex="3" name="designation" class="requried" placeholder="software"
+                value="<%=basic[0].designation%>">
+            <span class="error err-red" id="error-designation"></span>
+            <br>&emsp;<br>
+            <label for="address1">Address1 :</label>
+            <textarea name="address1" id="address1" cols="40" rows="2" class="requried"
+                placeholder="S.G.highway"><%=basic[0].address1%></textarea>
+            <span class="error err-red" id="error-address1"></span>
+            &emsp;
+            <label for="address2">Address2 :</label>
+            <textarea name="address2" id="address2" cols="40" rows="2"></textarea>
+            <br>&emsp;<br>
+            <label for="email">Email :</label>
+            <input type="text" id="email" name="email" class="requried" placeholder="abc@gmail.com"
+                value="<%=basic[0].email%>">
+            <span class="error err-red" id="error-email"></span>
+            &emsp;
+            <label for="pnumber">Phone Number :</label>
+            <input type="text" id="pnumber" name="pnumber" class="requried" placeholder="Ex. 9876543210"
+                value="<%=basic[0].mobielnumber%>">
+            <span class="error err-red" id="error-pnumber"></span>
+            <br>&emsp;<br>
+            <label for="city">City :</label>
+            <input type="text" id="city" name="city" class="requried" placeholder="Ahmedabad"
+                value="<%=basic[0].city%>">
+            <span class="error err-red" id="error-city"></span>
+            &emsp;
+            <label for="state">Select state :</label>
+            <select id="state" name="state">
+                <option  <% if(basic[0].state) { %> value = "<%=basic[0].state%>" <%}%> hidden checked>
+                    <%=basic[0].state%>
+                </option>
+                <option value="gujarat">gujarat</option>
+                <option value="up">up</option>
+                <option value="mp">mp</option>
+                <option value="jammukashmir">jammukashmir</option>
+            </select>
+            <br>&emsp;<br>
+            <label for="gender">Gender :</label>
+            <input type="radio" name="gender" value="male" <%=(basic[0].gender=='male')?'checked':''%> > Male
+            <input type="radio" name="gender" value="female" <%=(basic[0].gender=='female')?'checked':''%> > Female
+            <input type="radio" name="gender" value="other"> Other
+            &emsp; &emsp;
+            <label for="zip code">Zipcode :</label>
+            <input type="text" id="zipcode" name="zipcode" class="requried" placeholder="3610005"
+                value="<%=basic[0].zipcode%>">
+            <span class="error err-red" id="error-zipcode"></span>
+            <br>&emsp;<br>
+            <label for="relationship">Relationship :</label>
+            <select id="relationship" name="relationship">
+                
+                <option  value="" hidden checked>
+                    <%=basic[0].reltionship_status%>
+                </option>
+                <option value="unmarried">unmarried</option>
+                <option value="married">married</option>
+            </select>
+            &emsp;
+            <label for="dob">DOB :</label>
+            <input type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" class="requried">
+            <span class="error err-red" id="error-dob"></span>
+        </fieldset>
+
+        <!-- Eduction -->
+        <fieldset>
+            <legend>
+                <h2>Eduction Details</h2>
+            </legend>
+            <span onclick="addfunc('ed','echild')" style="cursor: pointer; color: rgb(0, 60, 255);">Add
+                (+)</span>&emsp;&emsp;
+            <span onclick="deletefunc('ed','echild')" style="cursor: pointer; color: rgb(0, 60, 255);">Delete (-)</span>
+            <span id="check-all-fill-or-not-educ" class="error err-red"></span>
+            <div id="ed">
+                <div id="echild"><br>
+                    <label for="board">Name of Board / Course :</label>
+                    <input type="hidden" name="edu_id[]" value="<%=eduction_details[0].e_id%>">
+                    <input type="text" id="board" name="board[]" class="check-all-fill-or-not-educ" placeholder="SSC"
+                        value="<%=eduction_details[0].course_name%>">
+                    &emsp;
+                    <label for="pyear">Passing year :</label>
+                    <input type="text" id="pyear1" name="pyear[]" class="check-all-fill-or-not-educ" placeholder="2018"
+                        value="<%=eduction_details[0].passing_year%>">
+                    &emsp;
+                    <label for="percentage1">Percentage :</label>
+                    <input type="text" id="percentage" name="percentage[]" class="percentage" placeholder="50.00"
+                        class="check-all-fill-or-not-educ" value="<%=eduction_details[0].percantage%>">
+                    <span class="error err-red" id="error-percentage"></span>
+                </div>
+                <div id="echild"><br>
+                    <label for="board">Name of Board / Course :</label>
+                    <input type="hidden" name="edu_id[]" value="<%=eduction_details[1].e_id%>">
+                    <input type="text" id="board" name="board[]" class="check-all-fill-or-not-educ" placeholder="SSC"
+                        value="<%=eduction_details[1].course_name%>">
+                    &emsp;
+                    <label for="pyear">Passing year :</label>
+                    <input type="text" id="pyear1" name="pyear[]" class="check-all-fill-or-not-educ" placeholder="2018"
+                        value="<%=eduction_details[1].passing_year%>">
+                    &emsp;
+                    <label for="percentage1">Percentage :</label>
+                    <input type="text" id="percentage" name="percentage[]" class="percentage" placeholder="50.00"
+                        class="check-all-fill-or-not-educ" value="<%=eduction_details[1].percantage%>">
+                    <span class="error err-red" id="error-percentage"></span>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Work Experience -->
+        <fieldset>
+            <legend>
+                <h2>Work Experience</h2>
+            </legend>
+            <span onclick="addfunc('we','wchild')" style="cursor: pointer; color: rgb(0, 60, 255);">Add
+                (+)</span>&emsp;&emsp;
+            <span onclick="deletefunc('we','wchild')" style="cursor: pointer; color: rgb(0, 60, 255);">Delete (-)</span>
+            <span id="check-all-fill-or-not-work" class="error err-red"></span>
+            <div id="we">
+                <div id="wchild"><br>
+                    <label for="company Name">Company Name :</label>
+                    <input type="text" id="company1" class="check-all-fill-or-not-work" name="company1[]"
+                        placeholder="Google" value="<%=work_details[0].company_name%>">
+                    &emsp;
+                    <label for="Designation">Designation :</label>
+                    <input type="text" id="company_designation1" class="check-all-fill-or-not-work"
+                        name="company_designation1[]" placeholder="software engineer"
+                        value="<%=work_details[0].company_designation%>">
+                    &emsp;
+                    <label for="from">From :</label>
+                    <input type="text" id="from1" name="from1[]" class="check-all-fill-or-not-work"
+                        placeholder="YYYY-MM-DD"
+                        <% if(work_details[0].from_1) { %> value = " <%= (work_details[0].from_1.getFullYear()) + '-' + (work_details[0].from_1.getMonth() +1) + '-' + work_details[0].from_1.getDate()%>" <%} %>"
+                    &emsp;
+                    <label for="to">To :</label>
+                    <input type="text" id="to1" name="to1[]" class="check-all-fill-or-not-work" placeholder="YYYY-MM-DD"
+                    <% if(work_details[0].to_1) { %> value = " <%= (work_details[0].to_1.getFullYear()) + '-' + (work_details[0].to_1.getMonth() +1) + '-' + work_details[0].to_1.getDate()%>" <%} %>
+                    
+                </div>
+            </div>
+
+        </fieldset>
+
+        <!-- Language Known -->
+        <fieldset>
+            <legend>
+                <h2>Language Known</h2>
+            </legend>
+            <input type="checkbox" id="hindi" name="lang[]" value="hindi" class="lancheck" onclick="enDisFields('h')">
+            <label for="hindi"> Hindi</label>
+            &emsp;
+            <input type="checkbox" id="hindiread" name="hindi" value="hindiread" class="sub-hfield hindi" disabled>
+            <label for="hindiread"> Read</label>
+            &emsp;
+            <input type="checkbox" id="hindiwrite" name="hindi" value="hindiwrite" class="sub-hfield hindi" disabled>
+            <label for="hindiwrite "> Write</label>
+            &emsp;
+            <input type="checkbox" id="hindispeack" name="hindi" value="hindispeack" class="sub-hfield hindi" disabled>
+            <label for="hindispeack">Speak</label>
+            <br>
+
+            <input type="checkbox" id="guj" name="lang[]" value="guj" class="lancheck" onclick="enDisFields('g')">
+            <label for="guj">Gujarati</label>
+            &emsp;
+            <input type="checkbox" id="gujread" name="guj" value="gujread" class="sub-gfield guj" disabled>
+            <label for="gujread"> Read</label>
+            &emsp;
+            <input type="checkbox" id="gujwrite" name="guj" value="gujwrite" class="sub-gfield guj" disabled>
+            <label for="gujwrite"> Write</label>
+            &emsp;
+            <input type="checkbox" id="gujspeack" name="guj" value="gujspeack" class="sub-gfield guj" disabled>
+            <label for="gujspeack">Speak</label>
+            <br>
+            <input type="checkbox" id="eng" name="lang[]" value="eng" class="lancheck" onclick="enDisFields('e')">
+            <label for="eng">English</label>
+            &emsp;
+            <input type="checkbox" id="engread" name="eng" value="engread" class="sub-efield eng" disabled>
+            <label for="engread"> Read</label>
+            &emsp;
+            <input type="checkbox" id="engwrite" name="eng" value="engwrite" class="sub-efield eng" disabled>
+            <label for="engwrite"> Write</label>
+            &emsp;
+            <input type="checkbox" id="engspeack" name="eng" value="engspeack" class="sub-efield eng" disabled>
+            <label for="engspeack">Speak</label>
+
+        </fieldset>
+
+        <!-- Technologies -->
+        <fieldset>
+            <legend>
+                <h2>Technologies you known</h2>
+            </legend>
+            <input type="hidden" name="tech_id[]" value="<%=techknown[0]?techknown[0].t_id:''%>">
+            <input type="checkbox" id="php" name="tech[]" value="php" class="techcheck" onclick="enDisFields('p')">
+            <label for="php"> PHP</label>
+            &emsp;
+            <input type="radio" name="php[]" id="pbeginer" value="beginer" class="sub-pfield php" disabled>
+            <label for="phpb"> Beginer</label>
+            &emsp;
+            <input type="radio" name="php[]" value="mideator" id="pmideator" class="sub-pfield php" disabled>
+            <label for="phpm"> Mideator</label>
+            &emsp;
+            <input type="radio" name="php[]" value="expert" id="pexpert" class="sub-pfield php" disabled>
+            <label for="phpe">Expert</label>
+            <br>
+            <input type="hidden" name="tech_id[]" value="<%=techknown[1]?techknown[1].t_id:''%>">
+            <input type="checkbox" id="java" name="tech[]" value="java" class="techcheck" onclick="enDisFields('j')">
+            <label for="java"> JAVA</label>
+            &emsp;
+            <input type="radio" name="java[]" value="beginer" id="jbeginer" class="sub-jfield java" disabled>
+            <label for="javab"> Beginer</label>
+            &emsp;
+            <input type="radio" name="java[]" value="mideator" id="jmideator" class="sub-jfield java" disabled>
+            <label for="javam"> Mideator</label>
+            &emsp;
+            <input type="radio" name="java[]" value="expert" id="jexpert" class="sub-jfield java" disabled>
+            <label for="javae">Expert</label>
+            <br>
+            <input type="hidden" name="tech_id[]" value="<%=techknown[2]?techknown[2].t_id:''%>">
+            <input type="checkbox" id="sql" name="tech[]" value="sql" class="techcheck" onclick="enDisFields('s')">
+            <label for="sql"> Mysql</label>
+            &emsp;
+            <input type="radio" name="sql[]" value="beginer" id="sbeginer" class="sub-sfield sql" disabled>
+            <label for="sqlb"> Beginer</label>
+            &emsp;
+            <input type="radio" name="sql[]" value="mideator" id="smideator" class="sub-sfield sql" disabled>
+            <label for="sqlm"> Mideator</label>
+            &emsp;
+            <input type="radio" name="sql[]" value="expert" id="sexpert" class="sub-sfield sql" disabled>
+            <label for="sqle">Expert</label>
+            <br>
+            <input type="hidden" name="tech_id[]" value="<%=techknown[3]?techknown[3].t_id:''%>">
+            <input type="checkbox" id="oracle" name="tech[]" value="oracle" class="techcheck"
+                onclick="enDisFields('o')">
+            <label for="oracle"> Oracle</label>
+            &emsp;
+            <input type="radio" name="oracle[]" value="beginer" id="obeginer" class="sub-ofield oracle" disabled>
+            <label for="oracleb"> Beginer</label>
+            &emsp;
+            <input type="radio" name="oracle[]" value="mideator" id="omideator" class="sub-ofield oracle" disabled>
+            <label for="oraclem"> Mideator</label>
+            &emsp;
+            <input type="radio" name="oracle[]" value="expert" id="oexpert" class="sub-ofield oracle" disabled>
+            <label for="oraclee">Expert</label>
+            <br>
+        </fieldset>
+
+        <!-- Referance -->
+        <fieldset>
+            <legend>
+                <h2>Referance Contact</h2>
+            </legend>
+            <span onclick="addfunc('referance','referancechlid')" style="cursor: pointer; color: rgb(0, 60, 255);">Add
+                (+)</span>&emsp;&emsp;
+            <span onclick="deletefunc('referance','referancechlid')"
+                style="cursor: pointer; color: rgb(0, 60, 255);">Delete (-)</span>
+            <span id="check-all-fill-or-not-ref" class="error err-red"></span>
+            <div id="referance">
+                <div id="referancechlid"><br>
+                    <label for="name">Name :</label>
+                    <input type="text" id="rname1" name="rname[]" placeholder="Relative name"
+                        class="check-all-fill-or-not-ref" value="<%=referance[0].r_name%>">
+                    &emsp;
+                    <label for="contactnumber">Contact Number :</label>
+                    <input type="text" id="cnumber1" name="cnumber[]" placeholder="9876543210"
+                        class="check-all-fill-or-not-ref" value="<%=referance[0].r_number%>">
+                    &emsp;
+                    <label for="relation">Relation :</label>
+                    <input type="text" id="relation1" name="relation[]" placeholder="Friend"
+                        class="check-all-fill-or-not-ref" value="<%=referance[0].r_relation%>">
+                    <br>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Preferances -->
+        <fieldset>
+            <legend>
+                <h2>Preferances</h2>
+            </legend>
+            <label for="location">Preferd location :</label>
+            <select id="plocation" name="location">
+                <!-- <option value="select">select</option> -->
+                <option <% if(preferance[0].p_location) { %> value=" <%=preferance[0].p_location%>" <%}%> hidden checked>
+                    <%=preferance[0].p_location%>
+                </option>
+                <option value="ahmedabad">ahmedabad</option>
+                <option value="surat">surat</option>
+                <option value="gandhinagar">gandhinagar</option>
+                <option value="rajkot">rajkot</option>
+            </select>
+            &emsp;
+            <label for="nperiod">Notice period :</label>
+            <input type="text" id="nperiod" name="nperiod" class="requried" placeholder="6 months"
+                value="<%=preferance[0].notice_period%>">
+            <span class="error err-red" id="error-nperiod"></span>
+            &emsp;
+            <label for="department">Department :</label>
+            <select id="dep" name="department">
+                <!-- <option value="select">select</option> -->
+                <option <% if(preferance[0].department) { %> value="<%=preferance[0].department%>" <%}%> hidden checked>
+                    <%=preferance[0].department%>
+                </option>
+                <option value="design" class="check">design</option>
+                <option value="market" class="check">marketing</option>
+                <option value="software" class="check">software</option>
+            </select>
+            <br><br>
+            <label for="ectc">Expacted CTC :</label>
+            <input type="text" id="ectc" name="ectc" class="requried" placeholder="9.5 in(LPA)"
+                value="<%=preferance[0].expected_ctc%>">
+            <span class="error err-red" id="error-ectc"></span>
+            &emsp;
+            <label for="cctc">Current CTC :</label>
+            <input type="text" id="cctc" name="cctc" class="requried" placeholder="4.5 in(LPA)"
+                value="<%=preferance[0].current_ctc%>">
+            <span class="error err-red" id="error-cctc"></span>
+        </fieldset><br>
+
+        <input type="submit" value="submit" id="submit">
+        <!-- <input type="reset" value="clear" onclick="winreload()"> -->
+</body>
+<script>
+
+    // check update
+    [...document.querySelectorAll('.check')].map((element) => {
+        element.selected = ""
+    })
+
+    const winreload = () => {
+        window.location.reload()
+    }
+    const enDisFields = (lang) => {
+        console.log(lang);
+        let subfields = document.querySelectorAll(`.sub-${lang}field`)
+        console.log('sub', subfields);
+        for (let i = 0; i < subfields.length; i++) {
+
+            if (subfields[i].disabled) {
+                subfields[i].disabled = false;
+            }
+            else {
+                subfields[i].checked = false;
+                subfields[i].disabled = true;
+            }
+        }
+    }
+    //all add
+    function addfunc(parent, child) {
+        const node = document.getElementById(child);
+        const clone = node.cloneNode(true);
+        document.getElementById(parent).appendChild(clone);
+    }
+    //all delete
+    function deletefunc(parent, chlid) {
+        const node = document.getElementById(chlid);
+        if (document.querySelectorAll(`#${chlid}`).length > 1) {
+            document.getElementById(parent).removeChild(node);
+        }
+    }
+    // email
+    const validate_email = (email) => {
+        let emailRegx = /^[^\s@]+@[^\s@]+.[^\s@]+$/
+
+        // console.log(email);
+        if (!emailRegx.test(email)) {
+            document.getElementById('error-email').innerHTML = "email is invalid"
+        }
+    }
+    // mobile number
+    const validate_phoneNumber = (phoneNumber) => {
+        let phoneNumberRegx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
+
+        if (!phoneNumberRegx.test(phoneNumber)) {
+            document.getElementById('error-pnumber').innerHTML = "phone number is invalid"
+        }
+    }
+    // percentage
+    const validate_percentage = (pr, name) => {
+        let PercentageRegex = /\d*\.\d+%?/;
+        if (!PercentageRegex.test(pr)) {
+            document.getElementById('error-' + name).innerHTML = "percentage is invalid"
+            allow = false
+        }
+    }
+    // date
+    const validate_date = (date, name) => {
+        // let dateRegx =  /(0[1-9]|[12][0-9]|3[01])(\/|-)(0[1-9]|1[1,2])(\/|-)(19|20)\d{2}/  // DD-MM-YYYY
+        let dateRegx = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/  // YYYY-MM-DD
+        if (!dateRegx.test(date)) {
+            document.getElementById('error-' + name).innerHTML = "Date is invalid"
+        }
+    }
+    // plese fill a data
+    const valid = () => {
+        let allow = true;
+        let error = document.querySelectorAll('.error')
+        for (let err of error) {
+            err.innerHTML = ""
+        }
+        let ele = document.querySelectorAll('.requried')
+        for (let i = 0; i < ele.length; i++) {
+            if (ele[i].value.trim() == '') {
+                console.log(ele[i]);
+                allow = false;
+                document.getElementById('error-' + ele[i].name).innerHTML = "*(Please Fill)"
+            }
+            if (ele[i].value != '' && ele[i].name == 'email') {
+                validate_email(ele[i].value)
+            }
+            if (ele[i].value != '' && ele[i].name == 'pnumber') {
+                validate_phoneNumber(ele[i].value)
+            }
+            let datefields = ['dob', 'from1', 'to1']
+            if (ele[i].value != '' && datefields.includes(ele[i].name)) {
+                validate_date(ele[i].value, ele[i].name)
+            }
+            if (ele[i].value != '' && ele[i].id == 'percentage') {
+                validate_percentage(ele[i].value, ele[i].id)
+            }
+        }
+        // empty or full fill
+        let check_all_fill_or_not_fileds = ['check-all-fill-or-not-work', 'check-all-fill-or-not-educ', 'check-all-fill-or-not-ref']
+        for (let i = 0; i < check_all_fill_or_not_fileds.length; i++) {
+            let check_all_fill = 0
+            let check_all_fill_or_not = document.querySelectorAll(`.${check_all_fill_or_not_fileds[i]}`)
+
+            for (let i = 0; i < check_all_fill_or_not.length; i++) {
+                if (check_all_fill_or_not[i].value == "") {
+                    if (check_all_fill == 1) {
+                        check_all_fill = 2
+                        break;
+                    }
+                    check_all_fill = 3
+                } else if (!check_all_fill_or_not[i].value == "") {
+                    if (check_all_fill == 3) {
+                        check_all_fill = 2
+                        break;
+                    }
+                    check_all_fill = 1
+                }
+            }
+            if (check_all_fill == 2) {
+                document.getElementById(check_all_fill_or_not_fileds[i]).innerHTML = "either you fill all field or empty all field"
+                document.getElementById(check_all_fill_or_not_fileds[i]).style.color = "red"
+                allow = false;
+            }
+        }
+        // if (allow) {
+        //     return true;
+        // }
+        return allow;
+    }
+
+    // lang update
+    let lang = '<%-JSON.stringify(langknown)%>';
+    let langJSONParse = JSON.parse(lang)
+    // console.log(langJSONParse);
+    langJSONParse.map((langob) => {
+        let check_is_true = 0
+        for (let i in langob) {
+            try {
+                let langel = document.getElementById(langob[i])
+                // console.log(langob[i]);
+                langel.checked = true;
+                check_is_true = 1
+
+            } catch (error) {
+            }
+        }
+        if (check_is_true == 1) {
+            let subfields = document.querySelectorAll(`.${langob.l_name}`)
+            // console.log('sub', langob);
+            for (let i = 0; i < subfields.length; i++) {
+                subfields[i].disabled = false;
+            }
+        }
+    });
+
+    // tech update  
+
+    let tech = '<%-JSON.stringify(techknown)%>';
+    let techJSONParse = JSON.parse(tech)
+    // console.log(techJSONParse);
+    techJSONParse.map((techob) => {
+        let check_is_true = 0
+        for (let i in techob) {
+            // console.log(`${techob.t_level[0]}${techob.t_level}`);
+            try {
+                let techel = document.getElementById(techob[i])
+                techel.checked = true;
+                document.getElementById(`${techob.t_name[0]}${techob.t_level}`).checked = true
+                check_is_true = 1
+            } catch (error) {
+            }
+        }
+        if (check_is_true == 1) {
+            let subfields = document.querySelectorAll(`.${techob.t_name}`)
+            // console.log(techob.t_name);
+            for (let i = 0; i < subfields.length; i++) {
+                subfields[i].disabled = false;
+            }
+        }
+    });
+
+</script>
+
+</html>
