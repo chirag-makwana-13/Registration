@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone</title>
+</head>
+
+<body>
+   <label for="timezone">TimeZone</label>
+<select name="timezone" id="timezone" onchange="timezone()">
+    <option value="Asia/Kolkata">Ahmedabad</option>
+    <option value="America/Los_Angeles">Los Angles</option>
+    <option value="Asia/Dhaka">Dhaka</option>
+    <option value="Asia/Tokyo">Tokyo</option>
+    <option value="America/New_York">New york</option>
+    <option value="America/Toronto">Tornto</option>
+    <option value="Asia/Kabul">Kabul</option>
+    <option value="Europe/Moscow">Moscow</option>
+</select>
+<h4 style="text-align: right;"><a href="/newprofile">Back to Home</a></h4>
+<h1 id="time1"></h1>
+<h2 id="time"></h2>
+  
+</body>
+<script>
+let time = document.getElementById("time")
+function timezone() {
+    setInterval(timezone,1000);
+    const date = new Date();
+    let time = document.getElementById('timezone')
+    let text = date.toLocaleString('en-US',{
+        timeZone:time.value
+    });
+    let text1 = date.toLocaleString('en-US',{
+        timeZone:'Asia/Kolkata'
+    });
+    document.getElementById('time1').innerHTML = 'Current time(Ahmedabad) : '+ text1
+    document.getElementById("time").innerHTML=  '"'+time.value+'"'+ ' time is: '+text
+}
+
+</script>
+</html>

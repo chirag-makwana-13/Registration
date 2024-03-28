@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>onestudent</title>
+    <style>
+        body {
+            background-color:  rgb(217, 215, 250);
+        }
+        button {
+            height: 40px;
+            width: 100px;
+            background-color: rgb(250, 197, 185);
+            border-radius: 6px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            background-color:rgb(250, 197, 185) ;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        #d1{
+            color: rgb(0, 62, 134);
+            background-color: aliceblue;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>One Student Data </h1>
+    <h4 style="text-align: right;"><a href="/jsonplaceholder/posts">Back</a></h4>
+            <table id="t1">
+                <tr></tr>
+            </table><br>
+            <button onclick="comment()">Show comments</button><br>
+            Comment : <div id="d1"></div>   
+</body>
+<script> 
+    let obj = {}
+    let page = 1;
+
+    // comment show
+
+    async function comment(){
+        let comm = await fetch('https://jsonplaceholder.typicode.com/comments').then(response=>{return response.json()})
+        const idarray = document.location.pathname.split("/");
+        const id = idarray[idarray.length -1]
+        console.log(id)
+
+        let commentObj2 = comm.filter(function (el) {
+            return el.postId == id;
+
+        })
+        console.log(commentObj2);
+        if (document.getElementById('d1').style.display == ''){
+            document.getElementById('d1').style.display = 'none'
+        }else{
+            document.getElementById('d1').style.display = ''
+            document.getElementById('d1').innerHTML = ''
+        }
+        for(comm2 of commentObj2){
+            document.getElementById('d1').innerHTML += `--> &ensp;`+ comm2.body + `<br><br>`
+        }
+    }
+
+    // show a data in table 
+
+    function tablecreate(data1,pageno) {
+        console.log(data1);
+        const keys = Object.keys(data1);
+        let a = '<tr>';
+        for (let i = 0; i < keys.length; i++) {
+            a = a + '<th>' + keys[i] + '</th>'
+        }
+        a += '</tr>'
+
+        let val2 = Object.values(data1);
+        let b = '<tr>';
+            for (let i = 0; i < val2.length; i++) {
+                // console.log(val2[i]);
+                // let val3 = Object.values(val2[i]);   
+            b = b + '<td>' + val2[i] + '</td>'
+            // console.log(b);
+        }
+        b += '</tr>'
+        document.getElementById('t1').innerHTML = a + b;
+    }
+
+    // fetch url and scan all data
+
+    const res = fetch('https://jsonplaceholder.typicode.com/posts/<%=id%>').then(response => { return response.json() }).then(data1 => {obj=data1
+     tablecreate(data1,1) })
+</script>
+
+</html>
