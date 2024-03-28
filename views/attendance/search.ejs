@@ -1,0 +1,26 @@
+<hr>
+<div class="d1">
+    <div>
+        <form action="/attendance/search" method="post" class="f1">
+            <input type="text" name="s_id" placeholder="Student id" required>
+            <input type="submit" value="Go">
+        </form>
+    </div>
+    <div class="f1">
+        <input type="button" value="Show more" onclick="filter()">
+    </div>
+    <div id="filters" class="f1">
+        <form action="/attendance/searchfilters" method="post">
+            <input type="text" name="fname" placeholder="First name">
+            <input type="text" name="lname" placeholder="Last name">
+            <input type="number" name="pr" placeholder="Percentage">
+            <select id="drop" name="type">
+                <option value="or">OR</option>
+                <option value="and">AND</option>
+            </select>
+            <input type="submit" value="Go">
+        </form>
+    </div>
+
+
+</div>

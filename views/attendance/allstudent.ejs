@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Student Data</title>
+    <style>
+        body {
+            background-color: rgb(185, 218, 250);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        button {
+            height: 50px;
+            border: none;
+            background-color: rgb(185, 218, 250);
+            font-size: 20px;
+            padding: 15px 15px;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            background-color: rgb(217, 215, 250);
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+            margin-left: 350px;
+        }
+
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            margin: 30px;
+        }
+
+        button {
+            height: 20px;
+        }
+
+        h5 {
+            margin-top: 5px;
+        }
+
+        .b1 {
+            font-size: 20px;
+            background-color: rgb(133, 183, 233);
+        }
+
+        #months {
+            height: 40px;
+            background-color: rgb(0, 4, 63);
+            color: rgb(185, 218, 250);
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            text-align: center;
+        }
+        #filters{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .f1{
+            margin-top: 0px;
+        }
+        .d1{
+            display: flex;
+            flex-direction: column;
+            height: 8%;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Chirag Makwana <br>( ID:24DEV095 )</h1>
+    <%- include('./search.ejs');%>
+    <h1><a href="/attendance/exam">Exam Data Here</a></h1></h1>
+    <select id="months" onchange="selectmonth(value)">
+        <option value="12">December-2023</option>
+        <option value="1">January-2024</option>
+        <option value="2">February-2024</option>
+    </select>
+    <% if(who != 'search' ){ %>
+            <%- include('./paging.ejs');%>
+                <% } %>
+                    <table>
+                        <tr>
+                            <th onclick="ochange(event)">s_id</th>
+                            <th onclick="ochange(event)">fname</th>
+                            <th onclick="ochange(event)">lname</th>
+                            <th onclick="ochange(event)">att</th>
+                            <th onclick="ochange(event)">pr</th>
+                            <th>Some data</th>
+                            <% for(var i=0; i<data.length;i++){%>
+                        <tr>
+                            <td>
+                                <%=data[i].s_id%>
+                            </td>
+                            <td>
+                                <%=data[i].fname%>
+                            </td>
+                            <td>
+                                <%=data[i].lname%>
+                            </td>
+                            <td>
+                                <%=data[i].att%>
+                            </td>
+                            <td>
+                                <%=data[i].pr%>
+                            </td>
+                            <td>
+                                <%=data[i].email%>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </table>
+                    <a href="/attendance/allstudent/1">Back</a>
+                    <% if(who != 'search' ){ %>
+                        <%- include('./paging.ejs');%>
+                            <% } %>
+                        <!-- <p>Total Records: <%=total%></p> -->
+</body>
+<script>
+    function selectmonth(value) {
+        window.location.href = '/attendance/allstudent/1?month=' + value
+    }
+    const mon = document.querySelector("#months")
+    mon.value = `<%=query%>`;
+
+    const ochange = (event) => {
+        console.log(event.target.innerText.split(' '));
+        field = event.target.innerText.split(' ')[0]
+        url = window.location.href;
+        if (url.includes('asc')) {
+            window.location.href = '/attendance/<%=who%>/<%=pageno%>?orderby=' + field + '&orderdir=desc';
+        } else {
+            window.location.href = '/attendance/<%=who%>/<%=pageno%>?orderby=' + field + '&orderdir=asc';
+        }
+    }
+    
+    const filter = () => {
+        // console.log("hii");
+        let show = document.getElementById("filters");
+        if(show.style.display==="none"){
+            show.style.display =""   
+        }
+        else{
+            show.style.display ="none"
+        }
+    }
+
+    
+</script>
+
+</html>
