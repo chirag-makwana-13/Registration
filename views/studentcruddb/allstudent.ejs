@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Oderby in student data</title>
+    <style>
+        body {
+            background-color: rgb(250, 197, 185);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        button {
+            height: 99px;
+            border: none;
+            background-color: rgb(250, 197, 185);
+            font-size: 30px;
+            padding: 25px 25px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            background-color: rgb(217, 215, 250);
+            border-collapse: collapse;
+            text-align: center;
+        }
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            margin: 30px;
+        }
+
+        button {
+            height: 20px;
+        }
+
+        h5 {
+            margin-top: 5px;
+        }
+        .b1{
+            font-size: 20px;
+            background-color: rgb(250, 197, 185);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pagination in database</h1>
+    <div>
+        <% if(pageno==1){ %>
+            <button disabled>
+                << </button>
+                    <button disabled>
+                        < </button>
+                            <%} else { %>
+                                <a href="/studentdb/allstudent/1"><button>
+                                        << </button></a>
+                                <a href="/studentdb/allstudent/<%=pageno-1%>"><button>
+                                        < </button></a>
+                                <% } %>
+
+                                    <button>
+                                        <%=pageno%>
+                                    </button>
+                                    <% if(pageno==250){ %>
+                                        <button disabled> > </button>
+                                        <button disabled> >> </button>
+                                        <%} else { %>
+                                            <a href="/studentdb/allstudent/<%=pageno+1%>"><button> > </button></a>
+                                            <a href="/studentdb/allstudent/250"><button> >> </button></a>
+                                            <% } %>
+    </div>
+    <table>
+        <tr>
+            <th>Sr no. <br><a href="/studentdb/allstudent/<%=pageno%>/s_id/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/s_id/desc">\/</a></th>
+           <th> First name <br><a href="/studentdb/allstudent/<%=pageno%>/fname/asc"> /\</a><a href="/studentdb/allstudent/<%=pageno%>/fname/desc">\/</a></th>
+            <th>Last name <br><a href="/studentdb/allstudent/<%=pageno%>/lname/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/lname/desc">\/</a></th>
+            <th>Mobile Number <br><a href="/studentdb/allstudent/<%=pageno%>/mobileno/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/mobileno/desc">\/</a></th>
+            <th>Email <br><a href="/studentdb/allstudent/<%=pageno%>/email/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/email/desc">\/</a></th>
+            <th>Birth date <br><a href="/studentdb/allstudent/<%=pageno%>/dob/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/dob/desc">\/</a></th>
+            <th>City <br><a href="/studentdb/allstudent/<%=pageno%>/city/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/city/desc">\/</a></th>
+            <th>Address <br><a href="/studentdb/allstudent/<%=pageno%>/address/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/address/desc">\/</a></th>
+            <th>Parents number <br><a href="/studentdb/allstudent/<%=pageno%>/parentno/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/parentno/desc">\/</a></th>
+            <th>Country <br><a href="/studentdb/allstudent/<%=pageno%>/country/asc">/\</a><a href="/studentdb/allstudent/<%=pageno%>/country/desc">\/</a></th>
+        </tr>
+        <% for(var i=0; i<data.length;i++){%>
+            <tr>
+                <td>
+                    <%=data[i].s_id%>
+                </td>
+                <td>
+                    <%=data[i].fname%>
+                </td>
+                <td>
+                    <%=data[i].lname%>
+                </td>
+                <td>
+                    <%=data[i].mobileno%>
+                </td>
+                <td>
+                    <%=data[i].email%>
+                </td>
+                <td>
+                    <%=data[i].dob%>
+                </td>
+                <td>
+                    <%=data[i].city%>
+                </td>
+                <td>
+                    <%=data[i].address%>
+                </td>
+                <td>
+                    <%=data[i].parentno%>
+                </td>
+                <td>
+                    <%=data[i].country%>
+                </td>
+            </tr>
+            <%}%>
+    </table>
+    <div class="pagination">
+        <% if(pageno==1){ %>
+        <button disabled>
+        << </button>
+        <button disabled>
+        < </button>
+        <%} else { %>
+        <a href="/studentdb/allstudent/1"><button>
+        << </button></a>
+        <a href="/studentdb/allstudent/<%=pageno-1%>"><button>
+        < </button></a>
+        <% } %>
+        <button>
+        <%=pageno%>
+        </button>
+         <% if(pageno==250){ %>
+        <button disabled> > </button>
+        <button disabled> >> </button>
+        <%} else { %>
+        <a href="/studentdb/allstudent/<%=pageno+1%>"><button> > </button></a>
+        <a href="/studentdb/allstudent/250"><button> >> </button></a>
+        <% } %>
+    </div>
+    <!-- <p>Total Records: <%=total%></p> -->
+</body>
+
+</html>

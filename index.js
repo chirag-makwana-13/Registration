@@ -33,6 +33,9 @@ app.use('/html1',require('./routes/html1/html1'))
 app.use('/html2',require('./routes/html2/html2'))
 app.use('/html3',require('./routes/html3/html3'))
 app.use('/student',require('./routes/studentscrudfile/studentfilecrud'))
+app.use('/studentdb',require('./routes/studentcruddb/studentcruddb'))
+app.use('/attendance',require('./routes/attendance/attendance'))
+
 
 
 
