@@ -11,17 +11,6 @@
 <body>
     <div class="main">
         <h2>Verification</h2>
-        <!-- <form action="/verify" method="post">
-            <p id="err" style="color: red;"></p>
-            <input type="hidden" id="email" value="<%=email%>" name="email"/>
-            
-            <label for="firstname">Activation code:</label>
-            <input type="text" id="firstname" name="activation_code" placeholder="Activation code" />
-            <p>Activation code here: <b><%=code%></b></p><br>
-              <a href="verify?code=<%=code%>">click</a> 
-
-            <button type="submit">Verify</button>
-        </form> -->
         <span id="token"><a href="verify?email=<%=email%>&code=<%=code%>">verifyuser</a></span>
     </div>
 </body>

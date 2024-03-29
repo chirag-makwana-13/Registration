@@ -127,7 +127,9 @@ router.post('/searchfilters' ,(req, res)=>{
         query = `select student_50k.s_id , student_50k.fname , student_50k.lname,  count(attendence_50k.attendence) as att , (count(attendence_50k.attendence)/(select count(distinct date) from attendence_50k))*100 as pr from student_50k join attendence_50k where student_50k.s_id = attendence_50k.s_id and attendence_50k.attendence = "P" and student_50k.fname= '${fname}' and student_50k.lname='${lname}' group by s_id having (count(attendence_50k.attendence)/(select count(distinct date) from attendence_50k))*100 >='${pr}';`
       }else{
         query = `select student_50k.s_id , student_50k.fname , student_50k.lname,  count(attendence_50k.attendence) as att , (count(attendence_50k.attendence)/(select count(distinct date) from attendence_50k))*100 as pr from student_50k join attendence_50k where student_50k.s_id = attendence_50k.s_id and attendence_50k.attendence = "P" and (student_50k.fname= '${fname}' or student_50k.lname='${lname}') group by s_id having (count(attendence_50k.attendence)/(select count(distinct date) from attendence_50k))*100 >='${pr}';`
+        // console.log(query);
       }
+
       con.query(query,(error,result)=>{
         if (error) throw error;
         res.render('attendance/allstudent', { data: result, pageno: page, total: totalr, query: month, who: who });

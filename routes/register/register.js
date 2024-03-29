@@ -48,10 +48,10 @@ router.get('/', verifyLoginMiddleware,(req, res) => {
             let activequery = `update userdata set active_status = 1 where email= '${req.query.email}'`
             db.query(activequery, function (err, result) {
               console.log("hiiiiii",result);
-              return res.render('password', { email: req.query.email,is_forgot:false })
+              return res.render('password', { email: req.query.email,is_forgot:false,code:req.query.code })
             })
           }else {
-            return res.render('verify', { email: req.query.email, err: "code expire" , expire:true })
+            return res.render('verify', { email: req.query.email, err: "code expire" , expire:true,code:req.query.code })
           }
         }
         // res.json({'data':result})

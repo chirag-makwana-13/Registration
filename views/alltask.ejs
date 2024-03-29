@@ -6,13 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All task</title>
     <style>
-        th,
+        body {
+            background-color: rgb(181, 220, 255) ;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 35px;
+        }
+        #ul {
+            display: flex;
+            margin: -92px;
+            padding: 0px;
+            margin-left: 732px;
+        }
+        li {
+            float: left;
+            list-style: none;
+            margin: 12px;
+        }
+
+        .nav1 a {
+            font-size: 18px;
+            padding: 12px;
+            text-decoration: none;
+            width: 100px;
+            /* height: 25px; */
+            color: black;
+        }
+
+        .img {
+            width: 80px;
+        }
+
+        th {
+            background-color: slateblue;
+            border: 1px solid black;
+            color: wheat;
+        }
+
         td {
             border: 1px solid black;
-
-            background-color: rgb(248, 185, 142);
+            background-color: rgb(255, 189, 128);
             text-align: center;
         }
+        /* td:hover{
+            background-color: rgb(129, 196, 255);
+        } */
 
         tr {
             height: 50px;
@@ -30,89 +70,122 @@
         a {
             text-decoration: none;
             font-size: 18px;
-            color: rgb(2, 0, 124);
+            color: rgb(3, 0, 170);
         }
-        a:hover{
+
+        a:hover {
             color: rgb(13, 114, 0);
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    &emsp;<a href="/">Regitration</a>&emsp;&emsp;&emsp;
-    <a href="login/login">Login</a>&emsp;&emsp;&emsp;
-    <a href="/logout">Logout</a>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="graduation-1345143_1280.png" alt="" height="80px">
+            </div>
+            <nav id="ul">
+                <ul>
+                    <li class="nav1"><a href="/newprofile">Home</a></li>
+                    <li class="nav1"><a href="/">Regitration</a></li>
+                    <li class="nav1"><a href="/login/login">Login</a></li>
+                    <li class="nav1"><a href="/logout">Logout</a></li>
+                    <li class="nav1"><a href="">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header><br>
     <center>
-        <h1>All Task</h1>
+        <h1>Chirag Makwana - 24DEV095</h1>
+        <h3>(All Task)</h3>
     </center>
     <table>
+        <th>Sr no.</th>
         <th>Name</th>
         <th>Link</th>
         <tr>
-            <td>1. Dynamic Table</td>
+            <td>1.</td>
+            <td>Dynamic Table</td>
             <td><a href="/dynamictable">dynamictable</a></td>
         </tr>
         <tr>
-            <td>2. Kuku cube</td>
+            <td>2.</td>
+            <td>Kuku cube</td>
             <td><a href="/kukucube">kukucube</a></td>
         </tr>
         <tr>
-            <td>3. Tic-Tac-Toe</td>
+            <td>3.</td>
+            <td>Tic-Tac-Toe</td>
             <td><a href="/tictactoe">tictactoe</a></td>
         </tr>
         <tr>
-            <td>4. JS events</td>
+            <td>4.</td>
+            <td>JS events</td>
             <td><a href="/jsevent">jsevent</a></td>
         </tr>
         <tr>
-            <td>5. HTML 1 (Ehya)</td>
+            <td>5.</td>
+            <td>HTML 1 (Ehya)</td>
             <td><a href="/html1">html1</a></td>
         </tr>
         <tr>
-            <td>6. HTML 2 (Awan Hoster)</td>
+            <td>6.</td>
+            <td>HTML 2 (Awan Hoster)</td>
             <td><a href="/html2">html2</a></td>
         </tr>
         <tr>
-            <td>7. HTML 3 (HireX)</td>
+            <td>7.</td>
+            <td>HTML 3 (HireX)</td>
             <td><a href="/html3">html3</a></td>
         </tr>
         <tr>
-            <td>8. Student file crud</td>
+            <td>8.</td>
+            <td>Student file crud</td>
             <td><a href="/student">student crud</a></td>
         </tr>
         <tr>
-            <td>9. Student db crud</td>
+            <td>9.</td>
+            <td>Student db crud</td>
             <td><a href="/studentdb/allstudent/1">student db crud</a></td>
         </tr>
         <tr>
-            <td>10. Student Attendence and Exam result</td>
+            <td>10.</td>
+            <td>Student Attendence and Exam result</td>
             <td><a href="/attendance/allstudent/1">student attendance</a></td>
         </tr>
         <tr>
-            <td>11. Find with delimeters</td>
+            <td>11.</td>
+            <td>Find with delimeters</td>
             <td><a href="/delimeter/allstudent/1">delimeter search</a></td>
         </tr>
         <tr>
-            <td>12. View grid</td>
+            <td>12.</td>
+            <td>View grid</td>
             <td><a href="/grid">grid</a></td>
         </tr>
         <tr>
-            <td>13. Job Applicaiton</td>
+            <td>13.</td>
+            <td>Job Applicaiton</td>
             <td><a href="/jobapplicaiton/home">jobapplicaiton</a></td>
         </tr>
         <tr>
-            <td>14. AJAX Job Applicaiton</td>
+            <td>14.</td>
+            <td>AJAX Job Applicaiton (with city and state)</td>
             <td><a href="/ajaxjobapplicaiton/home">ajaxjobapplicaiton</a></td>
         </tr>
         <tr>
-            <td>15. JSON placeholder</td>
+            <td>15.</td>
+            <td>JSON placeholder</td>
             <td><a href="/jsonplaceholder/posts">jsonplaceholder</a></td>
         </tr>
         <tr>
-            <td>16. Time Zone</td>
+            <td>16.</td>
+            <td>Time Zone</td>
             <td><a href="/timezone">timezone</a></td>
         </tr>
     </table>
-    </body>
+</body>
 
 </html>

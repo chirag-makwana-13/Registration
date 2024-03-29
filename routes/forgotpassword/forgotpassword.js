@@ -10,8 +10,8 @@ const localStorage = require('localStorage');
 
 
 
-// -------------------forgetpassword-------------------
-router.all('/forgetpassword', async (req, res) => {
+// -------------------forgotpassword-------------------
+router.all('/forgotpassword', async (req, res) => {
     try {
       if(req.method == 'GET'){
         res.render('email',{err:''})
@@ -33,7 +33,7 @@ router.all('/forgetpassword', async (req, res) => {
   router.all('/verifyforgetpassword', async (req, res) => {
       try {
         let email= req.body.email;
-        res.render('tokenpassword',{email:email,err:'',expire:false})
+        res.render('tokenpassword',{email:email,err:'',expire:false ,code:req.query.code})
       } catch (error) {
         res.write("Try again ")
         return res.end()
@@ -58,10 +58,10 @@ router.all('/forgetpassword', async (req, res) => {
             let activequery = `update userdata set active_status = 1 where email= '${req.query.email}'`
             db.query(activequery, function (err, result) {
               console.log("hiiiiii",result);
-              return res.render('password', { email: req.query.email,is_forgot:true })
+              return res.render('password', { email: req.query.email,is_forgot:true,code:req.query.code})
             })
           }else {
-            return res.render('tokenpassword', { email: req.query.email, err: "code expire" , expire:true })
+            return res.render('tokenpassword', { email: req.query.email, err: "code expire" , expire:true,code:req.query.code })
           }
         }
         // res.json({'data':result})
