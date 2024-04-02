@@ -77,10 +77,11 @@
                 <td id="a4" class="td"></td>
             </tr>
         </table>
-        <a href="/newprofile">Back --> </a>
+        <a href="/newprofile"> <--Back </a>
     <script>
         var value = 0;
         var timeleft =5;
+        // timer count
         var timer = setInterval(function(){
             if (timeleft <=0){
                 clearInterval(timer);
@@ -102,7 +103,7 @@
             timeleft -=1;
         },1000);
         console.log(timer);
-
+        // add row
         function addRow() {
             var table = document.getElementById("main");
             var rws = table.rows;
@@ -117,12 +118,14 @@
             }
         
         }
+        // color genrate
         function genColor(){
-            red = Math.floor(Math.random()*(255-0+1));
-            green = Math.floor(Math.random()*(255-0+1));
-            blue = Math.floor(Math.random()*(255-0+1));
+            red = Math.floor(Math.random()*(255));
+            green = Math.floor(Math.random()*(255));
+            blue = Math.floor(Math.random()*(255));
             return{red,green,blue};
         }
+        // random box 1 color opicity (true color)
         function haBox(){
             val1=genColor().red;
             val2=genColor().green;

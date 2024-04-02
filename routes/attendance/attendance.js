@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({
   extended: true
 }))
-
+// allstudent data
 router.get('/allstudent/:page', async (req, res) => {
     let { page } = req.params;
     if (page > 4 || page < 1) {
@@ -27,10 +27,14 @@ router.get('/allstudent/:page', async (req, res) => {
     let query = `select student_50k.s_id , student_50k.fname, student_50k.lname, count(attendence_50k.attendence) as att , (count(attendence_50k.attendence)/(select count(distinct date) from attendence_50k where month(date) = '1'))*100 as pr from student_50k join attendence_50k where student_50k.s_id = attendence_50k.s_id and attendence_50k.attendence = "P" and MONTH(attendence_50k.date) =${month} group by student_50k.s_id,student_50k.fname order by ${field} ${orderdir} limit ${recotrdsperpage} offset ${start} ;`;
     // console.log(query);
     // console.log(month)
-    let pquery = util.promisify(con.query).bind(con);
-    let result = await pquery(query);
+    con.query(query, function (error, result) {
+      if (error) throw error;
+      // res.render('attendance/exam', { data: result, total: totalr });
+      res.render('attendance/allstudent', { data: result, pageno: page, total: totalr, query: month, who: who });
+    });
+    // let pquery = util.promisify(con.query).bind(con);
+    // let result = await pquery(query);
     // console.log(result);
-    res.render('attendance/allstudent', { data: result, pageno: page, total: totalr, query: month, who: who });
 });
 
 // exam data with out promise

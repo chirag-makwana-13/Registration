@@ -18,12 +18,16 @@ router.get('/allstudent/:page', async (req, res) => {
     page = Number(page);
     let order = req.query.orderby || 's_id'
     let query = `select * from student_50k order by ${order} limit ${recotrdsperpage} offset ${start} ;`;
-    let pquery = util.promisify(db.query).bind(db);
-    let result = await pquery(query);
+    db.query(query, function (error, result) {
+      if (error) throw error;
+      res.render('studentcruddb/allstudent',{data: result , pageno: page , total: totalr});
+    });
+    // let pquery = util.promisify(db.query).bind(db);
+    // let result = await pquery(query);
     // console.log(result);  
-    res.render('studentcruddb/allstudent',{data: result , pageno: page , total: totalr});
   });
   
+  // 2. order by a data
   router.get('/allstudent/:page/:field/:order', async (req, res) => {
     // console.log("Inside")
     let {page} = req.params;
@@ -38,9 +42,12 @@ router.get('/allstudent/:page', async (req, res) => {
     let field=req.params.field || 'fname';
     let order = req.params.order || 'asc';
     let query = `select * from student_50k order by ${field} ${order} limit ${recotrdsperpage} offset ${start}`;
-    let pquery = util.promisify(db.query).bind(db);
-    let result = await pquery(query);
+    db.query(query, function (error, result) {
+      if (error) throw error;
+      res.render('studentcruddb/allstudent',{data: result , pageno: page , total: totalr});
+    });
+    // let pquery = util.promisify(db.query).bind(db);
+    // let result = await pquery(query);
     // console.log(result);  
-    res.render('studentcruddb/allstudent',{data: result , pageno: page , total: totalr});
   });
   module.exports = router
