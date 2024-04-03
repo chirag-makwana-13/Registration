@@ -51,6 +51,10 @@ fieldset{
     background-color: rgb(7, 0, 49);
     color: rgb(152, 209, 255);
 }
+a{
+    font-size: 20px;
+    color: rgb(20, 0, 110);
+}
 </style>
 
 <body>
@@ -64,8 +68,10 @@ fieldset{
     <h1>Job Application Form AJAX</h1>
     <hr>
     <h2>Name: Chirag Makwana &emsp;&emsp;Employee ID : 24DEV095</h2>
-    <a href="/newprofile">Back to home</a>
-    <!-- <h1><%=basic[0].f_name%>ef</h1> -->
+    <a href="/newprofile">Back to home</a>&emsp;&emsp;
+    <a href="/ajaxjobapplicaiton/home/243">Update</a>&emsp;&emsp;
+    <a href="/ajaxjobapplicaiton/home">Insert</a>&emsp;&emsp;
+    <h1><%=basic[0].c_id%></h1>
     <!-- <form action="<%=basic[0].f_name?'/update':'/form'%>" method="post" onsubmit="return valid()"> -->
     <!-- Basic Details  -->
     <fieldset class="event" id="basic">
@@ -73,6 +79,7 @@ fieldset{
             <h2>Basic Details</h2>
         </legend>
         <input type="hidden" name="id" id="c_id" class="basic" value="<%=basic[0].c_id%>">
+
         <label for="fname">First Name :</label>
         <input type="text" id="fname" tabindex="1" name="fname" class="basic" class="requried" placeholder="Your name"
             value="<%=basic[0].f_name%>">
@@ -120,7 +127,7 @@ fieldset{
             </option>
             <option value=22>gujarat</option>
             <option value=23>maharastra</option>
-            <option value=24>rajsthan</option>
+            <option value=24>rajsathan</option>
             <!-- <option value="mp">mp</option>
             <option value="jammukashmir">jammukashmir</option> -->
         </select>
@@ -147,7 +154,6 @@ fieldset{
         <br>&emsp;<br>
         <label for="relationship">Relationship :</label>
         <select id="relationship" name="relationship" class="basic">
-
             <option value="" hidden checked>
                 <%=basic[0].reltionship_status%>
             </option>
@@ -415,7 +421,7 @@ fieldset{
         <span class="error err-red" id="error-nperiod"></span>
         &emsp;
         <label for="department">Department :</label>
-        <select id="dep" name="department" class="preferance1">
+        <select id="department" name="department" class="preferance1">
             <!-- <option value="select">select</option> -->
             <option <% if(preferance[0].department) { %> value="
                 <%=preferance[0].department%>" <%}%> hidden checked>

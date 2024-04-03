@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({
   extended: true
 }))
 // allstudent data
-router.get('/allstudent/:page', async (req, res) => {
+const allstudent = async (req, res) => {
     let { page } = req.params;
     if (page > 4 || page < 1) {
       res.end('Page is not found')
@@ -35,11 +35,11 @@ router.get('/allstudent/:page', async (req, res) => {
     // let pquery = util.promisify(con.query).bind(con);
     // let result = await pquery(query);
     // console.log(result);
-});
+};
 
 // exam data with out promise
 
-router.get('/exam', (req, res) => {
+const exam = (req, res) => {
     try {
   
       let recotrdsperpage = 400;
@@ -55,9 +55,9 @@ router.get('/exam', (req, res) => {
       res.write("Try again ")
       return res.end()
     }
-});
+};
 
-router.get('/report/:studentid', (req, res) => {
+const report = (req, res) => {
     try {
       let totalr = 400;
       let studentid = req.params.studentid;
@@ -70,11 +70,11 @@ router.get('/report/:studentid', (req, res) => {
       res.write("Try again ")
       return res.end()
     }
-  });
+};
 
 // Search data month wise
 
-router.post('/search' ,(req, res)=>{
+const search = (req, res)=>{
     try{
       let s_id = req.body.s_id || "1";
       let page = req.params.pageno || "1" ;
@@ -102,11 +102,11 @@ router.post('/search' ,(req, res)=>{
       res.write("Try again ")
       return res.end()
     }
-  })
+};
   
   // Search filters
   
-router.post('/searchfilters' ,(req, res)=>{
+const searchfilter = (req, res)=>{
     try{
       let fname = req.body.fname;
       let lname = req.body.lname;
@@ -144,7 +144,7 @@ router.post('/searchfilters' ,(req, res)=>{
       res.write("Try again ")
       return res.end()
     }
-})
+}
 
 
-module.exports = router
+module.exports = {allstudent,exam,report,search,searchfilter}

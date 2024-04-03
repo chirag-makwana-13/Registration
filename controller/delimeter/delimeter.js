@@ -1,16 +1,13 @@
 const express = require('express')
-const fs = require("fs");
 const path = require('path');
 const router = express.Router()
-const util = require("util")
 const con = require('../../db')
-const mysql = require("mysql")
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({
   extended: true
 }))
 
-router.get('/allstudent/:page', async (req, res) => {
+const allstudent = async (req, res) => {
   let { page } = req.params;
   if (page > 4 || page < 1) {
     res.end('Page is not found')
@@ -33,11 +30,11 @@ router.get('/allstudent/:page', async (req, res) => {
   // let pquery = util.promisify(con.query).bind(con);
   // let result = await pquery(query);
   // console.log(result);  
-});
+};
 
 // find and delimeter type a data
 
-router.post('/delimeter', (req, res) => {
+const delimeter = (req, res) => {
   try {
     let data = req.body.data;
     let deli = { '_': "fname", '^': "lname", '$': "email", '}': "city", ':': "mobileno" };
@@ -109,6 +106,6 @@ router.post('/delimeter', (req, res) => {
     res.write("Try again ")
     return res.end()
   }
-})
+};
 
-module.exports = router
+module.exports = {allstudent,delimeter}

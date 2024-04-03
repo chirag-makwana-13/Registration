@@ -4,14 +4,14 @@ const db = require('../../db')
 
 // 1. form open url /home
 
-router.get('/home', (req, res) => {
+ const home = (req, res) => {
     res.render('jobapplication/application',{data:[[{}],[{},{}],[{}],[{}],[{},{},{}],[{},{},{},{}],[{}],[{}]]});
     // res.render('application',{data:''});
-  })
+  }
   
   // 2. Insert data in database /form 
   
-  router.post('/form', (req, res) => {
+    const form = (req, res) => {
   
     // 2.0 Basic data
   
@@ -204,11 +204,11 @@ router.get('/home', (req, res) => {
         return res.write("Try again ")
       }
     }
-    })
+    }
   
       // 3. access data in database
   
-    router.get('/form/:id',(req,res)=>{
+    const particulardata=(req,res)=>{
       try{
         let data = `select * from basic_details1 where c_id = '${req.params.id}';select * from eduction_details2 where c_id = '${req.params.id}';select * from work_experience1 where c_id = '${req.params.id}';select * from referance1 where c_id = '${req.params.id}';select * from preferance1 where c_id = '${req.params.id}';select * from language_known1 where c_id = '${req.params.id}';select * from technology_known1 where c_id = '${req.params.id}'`
         // console.log(data);
@@ -219,9 +219,9 @@ router.get('/home', (req, res) => {
       }catch (error) {
         return res.write("Try again ")
       }
-    })
+    }
     // 3.1  update data
-    router.post('/update',(req,res)=>{
+    const update = (req,res)=>{
       // console.log(req.body.id);
       // value=" <%=basic[0] ? new Date(basic[0].dob).toISOString().split('T')[0] : ''%> "
       // value=" <%=basic[0] ? new Date(work_details[0].from_1).toISOString().split('T')[0] : ''%> ">
@@ -345,5 +345,5 @@ router.get('/home', (req, res) => {
       } catch (error) {
         return res.write("pere Try again ")
       }
-    })
-    module.exports = router
+    }
+    module.exports = {home,form,particulardata,update}

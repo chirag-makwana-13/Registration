@@ -273,7 +273,7 @@ router.post('/updatereferance1', (req, res) => {
 //preferance 
 router.post('/updatepreferance1', (req, res) => {
     try {
-        let inquery = `update preferance1 set p_location='${req.body.location}',notice_period='${req.body.nperiod}',department='${req.body.department}',expected_ctc='${req.body.ectc}',current_ctc='${req.body.cctc}' where c_id='${req.body.c_id}'`;
+        let inquery = `update preferance1 set p_location='${req.body.plocation}',notice_period='${req.body.nperiod}',department='${req.body.department}',expected_ctc='${req.body.ectc}',current_ctc='${req.body.cctc}' where c_id='${req.body.c_id}'`;
         // console.log(inquery);
         db.query(inquery, function (error, result) {
             if (error) throw error
