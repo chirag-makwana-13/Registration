@@ -6,7 +6,7 @@ const util = require("util")
 const db = require('../../db')
 // 1. url type /duser/
 
-router.get('/allstudent/:page', async (req, res) => {
+const allstudent =  async (req, res) => {
     let {page} = req.params;
     if(page>250 || page< 1){
       res.end('Page is not found')
@@ -25,10 +25,10 @@ router.get('/allstudent/:page', async (req, res) => {
     // let pquery = util.promisify(db.query).bind(db);
     // let result = await pquery(query);
     // console.log(result);  
-  });
+  };
   
   // 2. order by a data
-  router.get('/allstudent/:page/:field/:order', async (req, res) => {
+const pagging =  async (req, res) => {
     // console.log("Inside")
     let {page} = req.params;
     if(page>250 || page< 1){
@@ -49,5 +49,5 @@ router.get('/allstudent/:page', async (req, res) => {
     // let pquery = util.promisify(db.query).bind(db);
     // let result = await pquery(query);
     // console.log(result);  
-  });
-  module.exports = router
+  };
+  module.exports = {allstudent,pagging}

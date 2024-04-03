@@ -72,7 +72,7 @@ router.get('/report/:studentid', (req, res) => {
     }
   });
 
-// Search data
+// Search data month wise
 
 router.post('/search' ,(req, res)=>{
     try{
