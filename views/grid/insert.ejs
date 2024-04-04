@@ -12,7 +12,7 @@
         <fieldset>
 
             <legend><h2>Enter Query</h2></legend>
-            Enter query:<input type="text" name="query">
+            Enter query:<input type="text" name="query" id="demo2" placeholder="Enter query">
             <!-- <button type="submit">Go</button> -->
             <input type="submit" value="submit">
             <input type="reset" value="clear">
@@ -25,4 +25,8 @@
         </fieldset>
     </form>
 </body>
+<script>
+    let result = text.trim();
+    document.getElementById("demo2").innerHTML = result;
+    </script>
 </html>

@@ -18,14 +18,14 @@ router.get('/city', (req, res) => {
 })
 // 1. form open url /home
 
-router.get('/home', (req, res) => {
+const home = (req, res) => {
     res.render('ajaxjobapplicaiton/application', { data: [[{}], [{}, {}], [{}], [{}], [{}, {}, {}], [{}, {}, {}, {}], [{}], [{}]], mode: 'insert' });
     // res.render('application',{data:''});
-})
+}
 
 // 3. access data in database
 
-router.get('/form/:id', (req, res) => {
+const form =(req, res) => {
     try {
         let data = `select * from basic_details1 where c_id = '${req.params.id}';select * from eduction_details2 where c_id = '${req.params.id}';select * from work_experience1 where c_id = '${req.params.id}';select * from referance1 where c_id = '${req.params.id}';select * from preferance1 where c_id = '${req.params.id}';select * from language_known1 where c_id = '${req.params.id}';select * from technology_known1 where c_id = '${req.params.id}'`
         // console.log(data);
@@ -36,10 +36,10 @@ router.get('/form/:id', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 //........................ *****AJAX insert******..........................
 
-router.get('/home/:id', (req, res) => {
+ const update =(req, res) => {
     try {
         let data = `select * from basic_details1 where c_id = '${req.params.id}';select * from eduction_details2 where c_id = '${req.params.id}';select * from work_experience1 where c_id = '${req.params.id}';select * from referance1 where c_id = '${req.params.id}';select * from preferance1 where c_id = '${req.params.id}';select * from language_known1 where c_id = '${req.params.id}';select * from technology_known1 where c_id = '${req.params.id}'`
         // console.log(data);
@@ -50,13 +50,13 @@ router.get('/home/:id', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 // basic insert
-router.post('/basic', (req, res) => {
+const basic = (req, res) => {
     try {
-        console.log(req.body);
+        // console.log(req.body);
         let inquery = `insert into basic_details1 (f_name,l_name,designation,email,mobielnumber,address1,address2,city,state,zipcode,gender,reltionship_status,dob) values('${req.body.fname}','${req.body.lname}','${req.body.designation}','${req.body.email}','${req.body.pnumber}','${req.body.address1}','${req.body.address2}','${req.body.city}','${req.body.state}','${req.body.zipcode}','${req.body.gender}','${req.body.relationship}','${req.body.dob}')`;
-        console.log(inquery);
+        // console.log(inquery);
         db.query(inquery, function (error, result) {
             // if (error)
             // console.log("error:"+error);
@@ -68,9 +68,9 @@ router.post('/basic', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 //eduction insert
-router.post('/eduction', (req, res) => {
+ const eduction = (req, res) => {
 
     try {
         // console.log(req.body);
@@ -84,7 +84,7 @@ router.post('/eduction', (req, res) => {
             for (let i = 0; i < course_name.length; i++) {
                 // console.log('ji');
                 inquery = `insert into eduction_details2 (c_id,course_name,passing_year,percantage) values('${c_id}','${course_name[i]}','${pyear[i]}','${percantage[i]}')`;
-                console.log(inquery);
+                // console.log(inquery);
                 db.query(inquery, function (error, result) {
                     if (error) throw error
                     // res.end();
@@ -94,9 +94,9 @@ router.post('/eduction', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 //work insert
-router.post('/work', (req, res) => {
+const work = (req, res) => {
 
     try {
         // console.log(req.body);
@@ -118,9 +118,9 @@ router.post('/work', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 // lang insert
-router.post('/language', (req, res) => {
+ const language = (req, res) => {
     try {
         // console.log(req.body);
         // let lang = req.body.language;
@@ -135,9 +135,9 @@ router.post('/language', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 //tech insert
-router.post('/technology', (req, res) => {
+ const technology = (req, res) => {
     try {
         // console.log(req.body);
         let tech = req.body.tech;
@@ -152,9 +152,9 @@ router.post('/technology', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 //referance
-router.post('/referance1', (req, res) => {
+ const referance1 = (req, res) => {
     try {
         let inquery = `insert into referance1 (c_id,r_name,r_number,r_relation ) values('${req.body.c_id}','${req.body.rname}','${req.body.cnumber}','${req.body.relation}')`;
         // console.log(inquery);
@@ -165,9 +165,9 @@ router.post('/referance1', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 // preferance
-router.post('/preferance1', (req, res) => {
+const preferance1 =  (req, res) => {
     try {
         let inquery = `insert into preferance1 (c_id,p_location,notice_period,department,expected_ctc,current_ctc) values('${req.body.c_id}','${req.body.plocation}','${req.body.nperiod}','${req.body.dep}','${req.body.ectc}','${req.body.cctc}')`;
         // console.log(inquery);
@@ -178,12 +178,12 @@ router.post('/preferance1', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 
 //............................*************Update**********......................................
 
 //basic update
-router.post('/updatebasic', (req, res) => {
+ const updatebasic=  (req, res) => {
     try {
         // console.log(req.body);
         let data = `update basic_details1 set f_name = '${req.body.fname}',l_name = '${req.body.lname}',designation='${req.body.designation}',email='${req.body.email}',mobielnumber='${req.body.pnumber}',address1='${req.body.address1}',address2='${req.body.address2}',city='${req.body.city}',state='${req.body.state}',zipcode='${req.body.zipcode}',gender='${req.body.gender}',reltionship_status='${req.body.relationship}',dob='${req.body.dob}' where c_id='${req.body.c_id}' `
@@ -195,9 +195,9 @@ router.post('/updatebasic', (req, res) => {
     } catch (error) {
         return res.write("basic Try again ")
     }
-})
+}
 // eduction update
-router.post('/updateeduction', (req, res) => {
+const updateeduction=  (req, res) => {
     try {
         // console.log(req.body);
         let course_name = req.body.board
@@ -210,7 +210,7 @@ router.post('/updateeduction', (req, res) => {
             for (let i = 0; i < course_name.length; i++) {
                 // console.log('ji', req.body.edu_id[0]);
                 inquery = `update eduction_details2 set course_name='${course_name[i]}',passing_year='${pyear1[i]}',percantage='${percentage[i]}' where c_id=${req.body.c_id} and e_id=${req.body.edu_id[i]}`;
-                console.log(inquery);
+                // console.log(inquery);
                 db.query(inquery, function (error, result) {
                     if (error) throw error
                     // console.log(result);
@@ -218,13 +218,13 @@ router.post('/updateeduction', (req, res) => {
                 });
             }
         }
-        console.log(inquery);
+        // console.log(inquery);
     } catch (error) {
         return res.write("edu Try again ")
     }
-})
+}
 // work update
-router.post('/updatework', (req, res) => {
+const updatework= (req, res) => {
     try {
         // console.log(req.body);
         let company1 = req.body.company1
@@ -246,9 +246,9 @@ router.post('/updatework', (req, res) => {
     } catch (error) {
         return res.write("work Try again ")
     }
-})
+}
 //refernace
-router.post('/updatereferance1', (req, res) => {
+const updatereferance1= (req, res) => {
     try {
         // console.log(req.body);
         let rname = req.body.rname
@@ -269,9 +269,9 @@ router.post('/updatereferance1', (req, res) => {
     } catch (error) {
         return res.write("ref Try again ")
     }
-})
+}
 //preferance 
-router.post('/updatepreferance1', (req, res) => {
+const updatepreferance1= (req, res) => {
     try {
         let inquery = `update preferance1 set p_location='${req.body.plocation}',notice_period='${req.body.nperiod}',department='${req.body.department}',expected_ctc='${req.body.ectc}',current_ctc='${req.body.cctc}' where c_id='${req.body.c_id}'`;
         // console.log(inquery);
@@ -282,5 +282,5 @@ router.post('/updatepreferance1', (req, res) => {
     } catch (error) {
         return res.write("pere Try again ")
     }
-})
-module.exports = router
+}
+module.exports = {home,form,basic,eduction,work,language,technology,referance1,preferance1,updatebasic,updateeduction,updatework,updatereferance1,updatepreferance1,update}

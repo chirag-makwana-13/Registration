@@ -3,12 +3,12 @@ const router = express.Router()
 var crypto = require("crypto");
 const db = require('../../db')
 const { authMiddleware,verifyLoginMiddleware }=require('../../middleware/auth')
-
-router.get('/', verifyLoginMiddleware,(req, res) => {
+// -----------------Registration-----------------------
+const home = (req, res) => {
     res.render('regi', { err: '' });
-  })
+  }
   //---------------------verify-------------------------
-  router.post('/register', (req, res) => {
+   const register = (req, res) => {
     var activation_code = crypto.randomBytes(2).toString('hex');
     console.log("random:", activation_code);
     let queryusers = `INSERT INTO userdata (firstname,lastname,email,activationcode)  VALUES ('${req.body.firstname}','${req.body.lastname}','${req.body.email}','${activation_code}');`
@@ -19,22 +19,22 @@ router.get('/', verifyLoginMiddleware,(req, res) => {
       console.log(req.body.email);
       return res.render('verify', { email: req.body.email,code:activation_code, err: '',expire:false })
     })
-  })
+  }
   // -------------------activation-------------------
-  router.post('/activationcode',(req,res)=>{
+   const activationcode =(req,res)=>{
     var activation_code = crypto.randomBytes(2).toString('hex');
     let a_update = `update userdata set activationcode='${activation_code}' where email='${req.body.email}'`
     db.query(a_update, (err, result) => {
         if(err) throw err;
         return res.status(200).json({activation_code:activation_code})
     })
-  })
+  }
   //---------------------password------------------------
-  router.all('/verify', (req, res) => {
+ const verify = (req, res) => {
     try {
       let getdata = `select * from userdata where email='${req.query.email}' AND activationcode='${req.query.code}'`;
       db.query(getdata, function (err, result) {
-        console.log(result);
+        // console.log(result);
         if (err) {
           return res.render('verify', { email: req.query.email,code:'', err: "" , expire:false })
         }
@@ -47,7 +47,7 @@ router.get('/', verifyLoginMiddleware,(req, res) => {
           if(diff<3600000){
             let activequery = `update userdata set active_status = 1 where email= '${req.query.email}'`
             db.query(activequery, function (err, result) {
-              console.log("hiiiiii",result);
+              // console.log("hiiiiii",result);
               return res.render('password', { email: req.query.email,is_forgot:false,code:req.query.code })
             })
           }else {
@@ -60,5 +60,5 @@ router.get('/', verifyLoginMiddleware,(req, res) => {
       res.write("Try again ")
       return res.end()
     }
-  }) 
-  module.exports=router;
+  }
+  module.exports={home,register,activationcode,verify};

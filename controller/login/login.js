@@ -6,10 +6,10 @@ const bcrypt = require('bcryptjs');
 const db = require('../../db')
 
 
-router.get('/login',verifyLoginMiddleware,(req,res)=>{
+ const login = (req,res)=>{
     res.render('login',{err: ''})
-  })
-  router.post('/login', async (req, res) => {
+  }
+  const loginpage = async (req, res) => {
     try {
       console.log(req.body.password);
       let password = req.body.password;
@@ -24,5 +24,5 @@ router.get('/login',verifyLoginMiddleware,(req,res)=>{
       res.write("Try again ")
       return res.end()
     }
-  })
-  module.exports = router
+  }
+  module.exports = {login,loginpage}

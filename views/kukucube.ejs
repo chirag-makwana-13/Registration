@@ -22,6 +22,7 @@
             width: auto;
             display: flex;
             justify-content: center;
+            
          
         }
 
@@ -32,6 +33,7 @@
         td {
             padding: 30px;
             border: 1px solid black;
+            border-radius: 6px;
         }
 
         div {
@@ -54,6 +56,7 @@
         a:hover{
             color: rgb(126, 0, 0);
         }
+
     </style>
 </head>
 
@@ -87,10 +90,10 @@
                 clearInterval(timer);
                 document.getElementById("countdown").innerHTML="finished";
                 document.getElementsByTagName("body")[0].innerHTML=
-                `<h1 style="margin-top:300px;margin-left:50%">Your score: ${value}</h1>`;
+                `<h1 style="margin-top:300px;margin-left:46%">Your score: ${value}</h1>`;
                 const btn =document.createElement('button');
                 btn.innerHTML="play again"
-                btn.style.marginleft = '50%'
+                btn.style.marginLeft= '50%'
                 btn.style.fontSize="20px"
                 btn.addEventListener("click",function(){
                     window.location.reload()

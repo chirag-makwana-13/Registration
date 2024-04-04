@@ -2,13 +2,13 @@ const express = require('express')
 const fs = require("fs");
 const path = require('path');
 const router = express.Router()
-router.get('/', (req, res) => {
+const home = (req, res) => {
     res.render('studentfilecrud/form');
-  })
+  }
   
   // form data save /form
   
-  router.post('/form', (req, res) => {
+const form = (req, res) => {
     const filePath = "./user.json";
     var uniqueId = Math.floor(Math.random() * 10000);
     let userDataArray = [];
@@ -37,11 +37,11 @@ router.get('/', (req, res) => {
     })
   
     res.send("Data print...&#128521;");
-  })
+  }
   
   // url type /user/
   
-  router.get('/user', (req, res) => {
+ const data = (req, res) => {
     const filePath = "./user.json";
     fs.readFile(filePath, (err, data) => {
       try {
@@ -59,11 +59,11 @@ router.get('/', (req, res) => {
         return res.end()
       }
     })
-  })
+  }
   
   // particular studentdata show url /user/id
   
-  router.get('/user/:id', (req, res) => {
+  const paticulardata = (req, res) => {
     const filePath = "./user.json";
     fs.readFile(filePath, (err, data) => {
       try {
@@ -83,5 +83,5 @@ router.get('/', (req, res) => {
         return res.end()
       }
     })
-  })
-  module.exports = router
+  }
+  module.exports = {home,form,data,paticulardata}

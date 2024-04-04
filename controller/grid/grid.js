@@ -12,11 +12,11 @@ router.use(bodyParser.urlencoded({
 
 // dynamic code run
 
-router.get('/', (req, res) => {
+const grid = (req, res) => {
     res.render('grid/insert');
-  });
+  };
   
-  router.all('/dynamic/:pageno?', (req, res) => {
+  const dynamic = (req, res) => {
     try {
       let recotrdsperpage = 50;
       let totalr = 1200;
@@ -55,8 +55,8 @@ router.get('/', (req, res) => {
       res.write("Try again ")
       return res.end()
     }
-  });
+  };
 
 
 
-module.exports = router
+module.exports = {grid,dynamic}

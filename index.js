@@ -5,7 +5,6 @@ const path = require('path');
 require("dotenv").config()
 app.set('view engine', 'ejs');
 app.use(express.json())
-const localStorage = require('localStorage');
 app.use(bodyParser.urlencoded({
   extended: true
 }))

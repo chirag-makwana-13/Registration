@@ -11,7 +11,7 @@ const localStorage = require('localStorage');
 
 
 // -------------------forgotpassword-------------------
-router.all('/forgotpassword', async (req, res) => {
+ const forgot = async (req, res) => {
     try {
       if(req.method == 'GET'){
         res.render('email',{err:''})
@@ -29,8 +29,8 @@ router.all('/forgotpassword', async (req, res) => {
       res.write("Try again ")
       return res.end()
     }
-  })
-  router.all('/verifyforgetpassword', async (req, res) => {
+  }
+   const verifyforgot = async (req, res) => {
       try {
         let email= req.body.email;
         res.render('tokenpassword',{email:email,err:'',expire:false ,code:req.query.code})
@@ -38,12 +38,12 @@ router.all('/forgotpassword', async (req, res) => {
         res.write("Try again ")
         return res.end()
       }
-  })
-  router.all('/verifyuser', (req, res) => {
+  }
+ const verifyuser = (req, res) => {
     try {
       let getdata = `select * from userdata where email='${req.query.email}' AND activationcode='${req.query.code}'`;
       db.query(getdata, function (err, result) {
-        console.log(result);
+        // console.log(result); 
         if (err) {
           return res.render('tokenpassword', { email: req.query.email,code:'', err: "" , expire:false })
         }
@@ -70,9 +70,9 @@ router.all('/forgotpassword', async (req, res) => {
       res.write("Try again ")
       return res.end()
     }
-  }) 
+  }
   // ---------------------checklogin-------------------------
-  router.post('/checklogin', async (req, res) => {
+  const checklogin = async (req, res) => {
     try {
       let success = false;
       console.log(req.body);
@@ -105,5 +105,5 @@ router.all('/forgotpassword', async (req, res) => {
       res.write("Try again ")
       return res.end()
     }
-  })
-  module.exports = router
+  }
+  module.exports = {forgot,verifyforgot,verifyuser,checklogin}
