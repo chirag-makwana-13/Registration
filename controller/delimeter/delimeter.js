@@ -99,8 +99,11 @@ const delimeter = (req, res) => {
       }
     }
     con.query(dquery, function (error, result) {
-      if (error) throw error;
-      res.render('delimeter/allstudent', { data: result });
+      if (error) {
+        res.send("Invalid delimeter")
+      }else{
+        res.render('delimeter/allstudent', { data: result });
+      }
     });
   } catch (error) {
     res.write("Try again ")

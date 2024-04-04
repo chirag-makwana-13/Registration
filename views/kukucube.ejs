@@ -90,7 +90,7 @@
 </body>
 <script>
     var value = 0;
-    var timeleft = 5;
+    var timeleft = 10;
     // timer count
     var timer = setInterval(function () {
         if (timeleft <= 0) {
@@ -113,7 +113,7 @@
         timeleft -= 1;
     }, 1000);
     console.log(timer);
-    // add row
+    // add row and cols
     let numrow = 2;
     function addRow() {
         if (numrow < 7) {

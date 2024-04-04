@@ -93,7 +93,9 @@ const search = (req, res)=>{
       // console.log(month)
   
       con.query(query,(error,result)=>{
-        if (error) throw error;
+        if (error) {
+          res.send("Invaild id")
+        }
         res.render('attendance/allstudent', { data: result, pageno: page, total: totalr, query: month, who: who });
       })
       // console.log("query");
