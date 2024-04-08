@@ -16,4 +16,5 @@ router.post('/updatework', controller.updatework);
 router.post('/updatereferance1', controller.updatereferance1);
 router.post('/updatepreferance1', controller.updatepreferance1);
 router.get('/home/:id',controller.update);
+router.get('/city',controller.city);
 module.exports = router

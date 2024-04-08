@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../../db')
 
 // city change  
-router.get('/city', (req, res) => {
+ const city = (req, res) => {
     try {
         let state = req.query.state_id;
         // console.log(state);
@@ -15,7 +15,7 @@ router.get('/city', (req, res) => {
     } catch (error) {
         return res.write("Try again ")
     }
-})
+}
 // 1. form open url /home
 
 const home = (req, res) => {
@@ -283,4 +283,4 @@ const updatepreferance1= (req, res) => {
         return res.write("pere Try again ")
     }
 }
-module.exports = {home,form,basic,eduction,work,language,technology,referance1,preferance1,updatebasic,updateeduction,updatework,updatereferance1,updatepreferance1,update}
+module.exports = {home,form,basic,eduction,work,language,technology,referance1,preferance1,updatebasic,updateeduction,updatework,updatereferance1,updatepreferance1,update,city}
